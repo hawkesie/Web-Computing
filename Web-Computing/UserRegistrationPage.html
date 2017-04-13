@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head >
+ <script type="text/javascript" src="UserRegistrationPage.js"></script>
  <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/> 
  <title>User Registration Page</title>
  </head>
@@ -24,23 +25,23 @@ Navigation<br><br>
 
 </div>
 <div id=content>Registration<br><br>
-<form>
+<form onsubmit="return checkValues();">
   Name:<br>
-  <input type="text" name="name"><br><br>
-  Email::<br>
-  <input type="text" name="email"><br><br>
+  <input type="text" name="name" id="name"><br><br>
+  Email:<br>
+  <input type="text" name="email" id="email"><br><br>
   Username<br>
   <input type="text" name="username"><br><br>
   Date of Birth:<br>
-  <input type="text" name="dob"><br><br>
-  Postcode<br>
+  <input type="date" name="dob"><br><br>
+  Postcode:<br>
   <input type="text" name="postcode"><br><br>
   Password:<br>
-  <input type="text" name="password"><br><br>
-  Confirm Password<br>
-  <input type="text" name="confirmPassword"><br><br>
+  <input type="text" name="password" id="password"><br><br>
+  Confirm Password:<br>
+  <input type="text" name="confirmPassword" id="confirmPassword"><br><br>
   <br>
-  <button type="button">Sign Up!</button>
+  <input type="submit" value="Sign Up">
 </form>
 
 </div>
