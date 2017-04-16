@@ -13,11 +13,12 @@ body {
 
 h1{
 font-family: Courier;
-padding-left:20px;
+padding-left:10px;
 padding-top: 10px;
 padding-bottom: 10px;
-background-color: #468989;
+background-color: #363933;
 color: white;
+margin-left: 0px;
 }
 
 #navigation{
@@ -27,8 +28,8 @@ padding-top: 20px;
 padding-left: 10px;
 width:250px;
 font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
-background-color: #5eebeb;
-margin-left: 10px;
+background-color: #8EE338;
+margin-left: 0px;
 opacity: 2;
 color: #686868;
 
@@ -56,19 +57,22 @@ padding-left: 50px;
 padding-right: 50px;
 padding-bottom: 40%;
 margin-left:300px;
-margin-right: 500px;
+margin-right: 200px;
 margin-bottom: 200px;
-background-color: gold;
+background-color: #F0F3ED;
 min-width: 600px; 
 opacity: 1;
+border-width: 5px;
+border-color: #BDC4B5;
+border-style: solid;
 }
 
 #rightbar{
 float: right;
 padding-top: 5px;
-margin-right: 50px;
-margin-left: 20px;
-background-color: #98acac;
+margin-right: 0px;
+margin-left: 100px;
+background-color: #8EE338;
 padding-left:20px;
 padding-top: 30px;
 padding-right: 50px;
