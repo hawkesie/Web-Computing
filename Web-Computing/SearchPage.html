@@ -2,6 +2,7 @@
 <html>
  <head >
  <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/> 
+ <script type="text/javascript" src="SearchPage.js"></script>
  <title>Search Page</title>
  </head>
  <div id =wrapper>
@@ -35,7 +36,8 @@ o	Geolocation tutorials: http://www.w3schools.com/html/html5_geolocation.asp, ht
   Rating:<br>
   <input type="text" name="rating"><br><br>
   <br>
-  <button type="button">Get Current Location</button>
+  <input type="button" value="Get Location" onclick="getLocation();">
+<div id="status"></div>
 </form>
 </div>
 
