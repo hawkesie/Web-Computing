@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
  <head >
+<!-- Links to the javascript file which contains the functions that are excuted on this page   -->
  <script type="text/javascript" src="UserRegistrationPage.js"></script>
- <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/> 
- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!--  Links to the css file which contains the syling instructions for the web page  -->
+ <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/>
+<!-- Title which is shown in the tab of the web page  -->
  <title>User Registration Page</title>
  <meta charset="UTF-8">
  </head>
  <body>
+<!--  Heading at the top of the page  -->
  <h1>User Registration Page</h1>
 <div id=menu></div>
 <div id=navigation>
@@ -21,12 +24,16 @@ Navigation<br><br>
 
 
 </div>
+<!--  Holder for the Right sidebar  -->
 <div id=rightbar>Right Sidebar<br><br>
 <br><br>
 
 </div>
+  
+<!-- Holder for the ain content area of the web page.   -->
 <div id=content>Registration<br><br>
 
+<!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues();">
   Name:<br>
   <input type="text" name="name" id="name"><br><br>
@@ -47,6 +54,7 @@ Navigation<br><br>
 </form>
 
 </div>
+<!--  Holder for the footer of the web page  -->
 <div id=footer>Footer</div>
  </body>
 </html> 
