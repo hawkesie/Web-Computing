@@ -1,14 +1,11 @@
-#wrapper{
-	background-color: #99ccff;
-	background:rgba(230,232,232, 0.3) ;
-	margin-left: 50px;
-	margin-right: 50px;
-}
+
+
 body {
  
  font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
  min-width: 600px; 
  background-attachment: fixed;
+ background-color:grey;
 }
 
 h1{
@@ -31,7 +28,6 @@ float: left;
 width:13%;
 font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 background-color: #8EE338;
-opacity: 2;
 color: #686868;
  padding-left:1%;
  padding-top: 1%;
@@ -95,7 +91,7 @@ margin-bottom: 5%;
 
 #footer{
 float: bottom;
-font-size: 10;
+font-size: 10pt;
 color: #ccd9ff;
 background-color: #666666;
 margin-top: 5px;
@@ -104,8 +100,8 @@ margin-bottom: 2%;
 }
 
 #searchResults{
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-collapse: collapse;
-    min-width: 325px;
-}​
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	border-collapse: collapse;
+	min-width: 325px;
+}
