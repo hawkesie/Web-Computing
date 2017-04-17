@@ -1,3 +1,5 @@
+// Function to retrieve the coordinates of the current location
+
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -5,6 +7,8 @@ function getLocation() {
 		document.getElementById("status").innerHTML="Geolocation is not supported by this browser.";
 	}
 }
+
+// Function to display the coordinates and google map of the users current location
 function showPosition(position) {
 	document.getElementById("status").innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;	
 
@@ -14,6 +18,8 @@ function showPosition(position) {
 	document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
 	
 }
+
+// Function to display an error if there are any issues accessing the current location
 function showError(error) {
 	var msg = "";
 	switch(error.code) {
