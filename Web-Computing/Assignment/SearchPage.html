@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head >
+   <!-- Link to the CSS -->
+ <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/>
+   <!-- Link to the Javascript -->
+ <script type="text/javascript" src="SearchPage.js"></script>
+
+   <!-- Page title on the web browser -->
+ <title>Search Page</title>
+  <meta charset="UTF-8">
+ </head>
+
+ <body>
+   <!-- Header title on the web page itself -->
+ <h1>Yelp or something</h1>
+  
+  <!-- Open and close the menu div tags -->
+<div id=menu></div>
+ 
+   <!-- Open the navigation div tag -->
+<div id=navigation>
+Navigation<br><br>
+  <!-- Navigation links to other pages -->
+<a href="UserRegistrationPage.html">Registration</a><br><br>
+<a href="SearchPage.html">Search</a><br><br>
+<a href="SampleResultsPage.html">Results</a><br><br>
+<a href="SampleIndividualItemPage.html">Item</a><br>
+  <!-- Close the navigation div tag -->
+</div>
+ 
+  <!-- Open the right sidebar div tag -->
+<div id=rightbar>Right Sidebar<br><br>
+<br><br>
+  <!-- Close the right sidebar div tag -->
+</div>
+  
+  <!-- Open the content div tag -->
+<div id=content>Content<br><br>
+
+•	A search page with a form that allows users to search for items based a suburb (selected from a drop-down list), a name (entered into a text box), a rating, or by automatically determining the user’s location using HTML5 Geolocation API.<br><br>
+o	Geolocation tutorials: http://www.w3schools.com/html/html5_geolocation.asp, http://diveintohtml5.info/geolocation.html <br><br>
+  <!-- Creates the form -->
+<form>
+  Suburb:<br>
+     <!-- Choose input type and names the field -->
+  <input type="text" name="suburb"><br><br>
+  Name:<br>
+     <!-- Choose input type and names the field -->
+  <input type="text" name="name"><br><br>
+  Rating:<br>
+     <!-- Choose input type and names the field -->
+  <input type="text" name="rating"><br><br>
+  <br>
+     <!-- Choose input type and names the field. Also contains an onclick function -->
+  <input type="button" value="Get Location" onclick="getLocation();">
+  <!-- Open and close the status div containers -->
+<div id="status"></div>
+  <!-- Open and close the mapholder div container -->
+<div id="mapholder"></div>
+   <!-- Ends the form -->
+</form>
+  <!-- Close the contents div tag -->
+</div>
+
+  <!-- Open and close the footer div tag -->
+<div id=footer>Footer</div>
+  <!-- Close the body tag -->
+ </body>
+</html> 
