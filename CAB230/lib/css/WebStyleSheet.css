@@ -1,0 +1,118 @@
+
+/*Styling for all elements in the body. Makes its minimum width 600 pixels. Sets its default font to Verdana or 
+others if Verdana is not suported
+Sets the background color
+*/
+body {
+ 
+ font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+ min-width: 600px; 
+ background-attachment: fixed;
+ background-color:grey;
+}
+
+/*  Styling for the heading at the top of the pages*/
+h1{
+font-family: Courier;
+padding-left:10px;
+padding-top: 10px;
+padding-bottom: 10px;
+background-color: #363933;
+color: white;
+margin-left: 0px;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+}
+
+/* Styling for the navigation bar on the left of all the pages
+This includes setting the fonts, setting the font color, background color, width and padding*/
+#navigation{
+float: left;
+width:13%;
+font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+background-color: #8EE338;
+color: #686868;
+ padding-left:1%;
+ padding-top: 1%;
+ padding-bottom: 10%;
+ margin-right: 1%;
+}
+
+/*  This sets the styling for each of the links in the navigation bar*/
+#navigation a{
+	color:#686868;
+	font-family: Arial-black,Helvetica,sans-serif;
+	font-size:12pt;
+ font-weight: bold;
+ text-decoration: none;
+ padding-right: 30%;
+ padding-top: 12px;
+ padding-bottom: 12px;
+}
+
+/*  Sets the styling for the links in the navigation bar when they are being hovered. This will make a hovered link highlighted*/
+#navigation a:hover {
+	color:black;
+	background-color: #d2d9f7;
+	border-width: 3px;
+	border-color: black;
+	width:10%;
+	padding-left: 1%;
+}
+
+/*  Styling for the main content area of the web pages*/
+#content{
+padding-top:50px;
+padding-bottom: 40%;
+margin-left:15%;
+margin-right: 15%;
+margin-bottom: 10%;
+padding-left: 2%;
+padding-right: 2%;
+padding-bottom: 10%;
+background-color: #F0F3ED;
+width:66%; 
+opacity: 1;
+border-width: 5px;
+border-color: #BDC4B5;
+border-style: solid;
+}
+
+/* Styling for the right sidebar on the web pages. */
+#rightbar{
+float: right;
+padding-top: 5px;
+background-color: #8EE338;
+width:12%;
+color:white;
+font-family: Arial-black,Helvetica,sans-serif;
+font-size:12pt;
+font-weight: bold;
+text-decoration: none;
+padding-top: 1%;
+padding-left: 1%;
+padding-bottom: 10%;
+margin-bottom: 5%;
+}
+
+/*  Styling for the footer of the web pages*/
+#footer{
+float: bottom;
+font-size: 10pt;
+color: #ccd9ff;
+background-color: #666666;
+margin-top: 5px;
+margin-bottom: 2%;
+
+}
+
+/*  Styling for the seacrh results in the SampleResultsPage.html page*/
+#searchResults{
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	border-collapse: collapse;
+	min-width: 325px;
+}

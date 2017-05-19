@@ -65,7 +65,6 @@ Navigation<br><br>
     <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
     <?php } ?>
   </select><br><br>
-    <!-- <input type="date" name="dob"><br><br> -->
 
   Postcode:<br>
     <input type="text" name="postcode" id="postcode"><br><br>

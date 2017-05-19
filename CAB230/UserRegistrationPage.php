@@ -2,9 +2,9 @@
 <html>
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
- <script type="text/javascript" src="UserRegistrationPage.js"></script>
+ <script type="text/javascript" src="includes/scripts/UserRegistrationPage.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
- <link href="WebStyleSheet.css" rel="stylesheet" type="text/css"/>
+ <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
  <title>User Registration Page</title>
  <meta charset="UTF-8">
@@ -65,7 +65,6 @@ Navigation<br><br>
     <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
     <?php } ?>
   </select><br><br>
-    <!-- <input type="date" name="dob"><br><br> -->
 
   Postcode:<br>
     <input type="text" name="postcode" id="postcode"><br><br>
