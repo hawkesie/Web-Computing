@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+  include "includes/scripts/register.inc"
+?>
+
 <html>
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
@@ -34,7 +39,7 @@ Navigation<br><br>
 <div id=content>Registration<br><br>
 
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
-<form onsubmit="return checkValues();">
+<form onsubmit="return checkValues();" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
     <input type="text" name="name" id="name"><br><br>
   Email:<br>
@@ -73,7 +78,7 @@ Navigation<br><br>
   Confirm Password:<br>
     <input type="text" name="confirmPassword" id="confirmPassword"><br><br>
   <br>
-  <input type="submit" value="Sign Up">
+  <input type="submit" value="submit">
 </form>
 
 </div>

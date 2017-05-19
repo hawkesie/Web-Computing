@@ -8,7 +8,7 @@
 			die();
 		}
 
-		return $pdo
+		return $pdo;
 	}
 
 	// Close connections to the database
