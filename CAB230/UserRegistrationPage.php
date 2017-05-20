@@ -43,9 +43,17 @@ Navigation<br><br>
    Name:<br>
     <input type="text" name="name" id="name"><br><br>
   Email:<br>
-    <input type="email" name="email" id="email"><br><br>
+    <input type="email" name="email" id="email">
+  <?php
+    checkEmail();
+  ?>
+    <br><br>
   Username:<br>
-    <input type="text" name="username"><br><br>
+    <input type="text" name="username">
+    <?php
+      checkUsername();
+    ?>
+<br><br>
   Gender:<br>
     <input type="radio" name="gender" value="Male">Male
     <input type="radio" name="gender" value="Female">Female

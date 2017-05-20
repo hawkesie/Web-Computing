@@ -1,6 +1,9 @@
 <?php
 	include"config/DBconfig.inc";
 
+	
+	$GLOBALS['checkEmail']='';
+	$GLOBALS['checkUsername']='';
 	if (isset($_POST['name'])) {
 		//Process the form
 
@@ -30,7 +33,7 @@
 
     	if ($stmt->rowCount() > 0) {
     		$correct_form = false;
-    		echo "Email already exists!<br>";
+    		$GLOBALS['checkEmail']='Email already exists!';
     	}
 
     	$sql =	"SELECT username FROM users ";
@@ -41,7 +44,7 @@
 
     	if ($stmt->rowCount() > 0) {
     		$correct_form = false;
-    		echo "Username already exists!<br>";
+    		$GLOBALS['checkUsername']='Username already exists!';
     	}
 
     	// Hash the password
@@ -69,3 +72,17 @@
 		    	);
 		}
 	}
+
+	function checkEmail(){
+		
+		echo $GLOBALS['checkEmail'];
+		
+	}
+
+	function checkUsername(){
+		
+		echo $GLOBALS['checkUsername'];
+		
+	}
+
+	?>
