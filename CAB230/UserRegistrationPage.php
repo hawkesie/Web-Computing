@@ -43,7 +43,7 @@ Navigation<br><br>
    Name:<br>
     <input type="text" name="name" id="name"><br><br>
   Email:<br>
-    <input type="text" name="email" id="email"><br><br>
+    <input type="email" name="email" id="email"><br><br>
   Username:<br>
     <input type="text" name="username"><br><br>
   Gender:<br>
