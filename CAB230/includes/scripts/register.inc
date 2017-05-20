@@ -54,18 +54,22 @@
 
     	// If the form has been filled out correctly without any duplicate unique fields, process the form
     	if ($correct_form == true) {
-	    	$q = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password);";
-		    	
-		    $query = $pdo->prepare($q);
-		    $query->execute(array(	    		
-		    	":name"=>$name,
-		   		":email"=>$email,
-		   		":username"=>$username,
-		   		":birthdate"=>$birthdate,
-		   		":gender"=>$gender,	    		
-		   		":postcode"=>$postcode,
-		   		":password"=>$hashedPassword)
+	    	$sql = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password);";
+	        
+	     	$stmt = $pdo->prepare($sql);
+	      	$stmt->execute(array(          
+	        	":name"=>$name,
+	        	":email"=>$email,
+	        	":username"=>$username,
+	        	":birthdate"=>$birthdate,
+	        	":gender"=>$gender,         
+	        	":postcode"=>$postcode,
+	        	":password"=>$hashedPassword)
 
-		    	);
-		}
+	        );
+	    }
+
+	    //Close the connection
+	    dbClose($stmt, $pdo);
 	}
+?>
