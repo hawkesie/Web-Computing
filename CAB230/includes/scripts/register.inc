@@ -5,7 +5,7 @@
 		//Process the form
 
 		$unique_email = true;
-		$correct_password = true;
+		$correct_form = true;
 
 		$name = $_POST["name"];
 		$email = $_POST["email"];
@@ -18,29 +18,54 @@
 	    $password = $_POST["password"];
 	    $confirmPassword = $_POST["confirmPassword"];
 	    $birthdate = $dobYear . '-' . $dobMonth . '-' . $dobDay;
-		
-	    //Confirm password entered correctly twice
-	    if ($password != $confirmPassword)
-	    	$correct_password = false;
 
 	    //Confirm email entered is unique
     	$pdo =	dbConnect();
     	
-    	$sql =	"SELECT email FROM users";
+    	$sql =	"SELECT email FROM users ";
     	$sql .=	"WHERE email = :email";
-    	
-    	$q = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password,salt)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password,:salt);";
-	    	
-	    $query = $pdo->prepare($q);
-	    $query->execute(array(	    		
-	    	":name"=>$name,
-	   		":email"=>$email,
-	   		":username"=>$username,
-	   		":birthdate"=>$birthdate,
-	   		":gender"=>$gender,	    		
-	   		":postcode"=>$postcode,
-	   		":password"=>$password,
-	   		":salt"=>'salty')
+	   	$stmt = $pdo->prepare($sql);
+    	$stmt->bindValue(":email", $email);
+    	$stmt->execute();
 
-	    	);
+    	if ($stmt->rowCount() > 0) {
+    		$correct_form = false;
+    		echo "Email already exists!<br>";
+    	}
+
+    	$sql =	"SELECT username FROM users ";
+    	$sql .=	"WHERE username = :username";
+	   	$stmt = $pdo->prepare($sql);
+    	$stmt->bindValue(":username", $username);
+    	$stmt->execute();
+
+    	if ($stmt->rowCount() > 0) {
+    		$correct_form = false;
+    		echo "Username already exists!<br>";
+    	}
+
+    	// Hash the password
+	    if ($password != $confirmPassword) {
+	    	$correct_form = false;
+	    	echo "Passwords do not match!<br>";
+	    } else {
+	    	$hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+	    }
+
+    	// If the form has been filled out correctly without any duplicate unique fields, process the form
+    	if ($correct_form == true) {
+	    	$q = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password);";
+		    	
+		    $query = $pdo->prepare($q);
+		    $query->execute(array(	    		
+		    	":name"=>$name,
+		   		":email"=>$email,
+		   		":username"=>$username,
+		   		":birthdate"=>$birthdate,
+		   		":gender"=>$gender,	    		
+		   		":postcode"=>$postcode,
+		   		":password"=>$hashedPassword)
+
+		    	);
+		}
 	}

@@ -2,9 +2,8 @@
 	// Connect to the database
 	function dbConnect() {
 		try {
-			$pdo = new PDO('mysql:host=localhost;dbname=brisbane_parks', 'root', '');
+			$pdo = new PDO('mysql:host=localhost;dbname=brisbane_parks', 'root', 'password123');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			echo'db connected';
 		} catch (PDOException $error) {
 			echo $error->getMessage()."<br>";
 			die();
