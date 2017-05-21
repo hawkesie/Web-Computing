@@ -1,11 +1,10 @@
-
-
 <?php
 	include"config/DBconfig.inc";
-
+	include"includes/functions.inc";
 	
 	$GLOBALS['checkEmail']='';
 	$GLOBALS['checkUsername']='';
+
 	if (isset($_POST['name'])) {
 		//Process the form
 
@@ -70,21 +69,7 @@
 		   		":gender"=>$gender,
 		   		":postcode"=>$postcode,
 		   		":password"=>$hashedPassword)
-
 		    	);
 		}
 	}
-
-	function checkEmail(){
-		echo $GLOBALS['checkEmail'];
-		
-	}
-
-	function checkUsername(){
-		
-		echo $GLOBALS['checkUsername'];
-		
-	}
-
-
-	?>
+?>

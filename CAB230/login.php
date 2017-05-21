@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-  include "includes/scripts/login.inc"
+  include "includes/scripts/login.inc";
+  include "includes/functions.inc";
 ?>
 
 <html>
@@ -44,6 +45,9 @@ Navigation<br><br>
     <input type="text" name="username"><br><br>
   Password:<br>
     <input type="text" name="password" id="password"><br><br>
+    <?php
+      checkUsernamePasswordCombination();
+    ?>
   <input type="submit" value="Login" name="login">
 </form>
 

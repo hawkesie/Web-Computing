@@ -1,6 +1,8 @@
 <?php
   include"config/DBconfig.inc";
 
+  $GLOBALS['badUsernamePassword']='';
+
   if (isset($_POST['login'])) {
     //Process the form
 
@@ -24,12 +26,13 @@
       $result = password_verify($submittedPassword, $hashedPassword[0]);
     } else {
       $userExists = false;
-      echo "That Username/Password combination does not exist!<br>";
     }
 
     if ($userExists == true && $result == true) {
       die("Successfully logged in!");
       /////////////////////////////////////////////////SESSION STUFF GOES IN HERE////////////////////////////////////////////////
+    } else {
+        $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br><br></span>";
     }
 
     //Close the connection
