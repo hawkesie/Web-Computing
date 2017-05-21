@@ -13,7 +13,7 @@
 
     $pdo =  dbConnect();
     
-    $sql =  "SELECT password FROM users ";
+    $sql =  "SELECT * FROM users ";
     $sql .= "WHERE username = :username";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":username", $username);
@@ -23,7 +23,7 @@
     if ($stmt->rowCount() > 0) {
       $hashedPassword = $stmt->fetch();
       // Result will be true if passwords match, false otherwise
-      $result = password_verify($submittedPassword, $hashedPassword[0]);
+      $result = password_verify($submittedPassword, $hashedPassword[7]);
     } else {
       $userExists = false;
     }
