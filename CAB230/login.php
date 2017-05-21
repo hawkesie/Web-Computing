@@ -31,10 +31,9 @@ Navigation<br><br>
 
 </div>
 <!--  Holder for the Right sidebar  -->
-<div id=rightbar>Right Sidebar<br><br>
-<br><br>
-
-</div>
+<?php
+include "includes/scripts/righSidebar.inc"
+?>
   
 <!-- Holder for the ain content area of the web page.   -->
 <div id=content>Login<br><br>

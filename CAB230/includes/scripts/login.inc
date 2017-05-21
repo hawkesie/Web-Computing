@@ -34,7 +34,7 @@
       $_SESSION['name'] = $userDetails[1];
       $_SESSION['email'] = $userDetails[2];
       $_SESSION['username'] = $userDetails[3];
-      echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
+      #echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
     } else {
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }

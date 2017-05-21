@@ -1,5 +1,4 @@
 <?php
-	include"config/DBconfig.inc";
 	include"includes/functions.inc";
 	
 	$GLOBALS['checkEmail']='';
