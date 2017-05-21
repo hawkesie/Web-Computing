@@ -35,7 +35,7 @@
 
     	if ($stmt->rowCount() > 0) {
     		$correct_form = false;
-    		$GLOBALS['checkEmail']='Email already exists!';
+    		$GLOBALS['checkEmail']="<span style='color:red;'>Email already exists!</span>";
     	}
 
     	$sql =	"SELECT username FROM users ";
@@ -46,7 +46,7 @@
 
     	if ($stmt->rowCount() > 0) {
     		$correct_form = false;
-    		$GLOBALS['checkUsername']='Username already exists!';
+    		$GLOBALS['checkUsername']="<span style='color:red;'>Username already exists!</span>";
     	}
 
     	// Hash the password
@@ -62,12 +62,12 @@
 	    	$q = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password);";
 		    	
 		    $query = $pdo->prepare($q);
-		    $query->execute(array(	    		
+		    $query->execute(array(
 		    	":name"=>$name,
 		   		":email"=>$email,
 		   		":username"=>$username,
 		   		":birthdate"=>$birthdate,
-		   		":gender"=>$gender,	    		
+		   		":gender"=>$gender,
 		   		":postcode"=>$postcode,
 		   		":password"=>$hashedPassword)
 
@@ -76,7 +76,6 @@
 	}
 
 	function checkEmail(){
-		
 		echo $GLOBALS['checkEmail'];
 		
 	}
