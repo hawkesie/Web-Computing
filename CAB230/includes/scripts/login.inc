@@ -21,18 +21,24 @@
 
     // Checking to see if the username exists
     if ($stmt->rowCount() > 0) {
-      $hashedPassword = $stmt->fetch();
+      $userDetails = $stmt->fetch();
       // Result will be true if passwords match, false otherwise
-      $result = password_verify($submittedPassword, $hashedPassword[7]);
+      $result = password_verify($submittedPassword, $userDetails[7]);
     } else {
       $userExists = false;
     }
 
     if ($userExists == true && $result == true) {
-      die("Successfully logged in!");
+      session_start();
+      $_SESSION['id'] = $userDetails[0];
+      $_SESSION['name'] = $userDetails[1];
+      $_SESSION['email'] = $userDetails[2];
+      $_SESSION['username'] = $userDetails[3];
+      //echo "<meta http-equiv=\"refresh\" content=\"0;URL=UserHome.php\">";
+      echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
       /////////////////////////////////////////////////SESSION STUFF GOES IN HERE////////////////////////////////////////////////
     } else {
-        $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br><br></span>";
+        $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }
 
     //Close the connection
