@@ -32,7 +32,15 @@ Navigation<br><br>
 </div>
 <!--  Holder for the Right sidebar  -->
 <?php
-include "includes/scripts/righSidebar.inc"
+
+if ($GLOBALS['loggedIn']!='') {
+    include "includes/scripts/rightSidebarLogged.inc";
+}
+else{
+  include "includes/scripts/rightSidebar.inc";
+}
+
+
 ?>
   
 <!-- Holder for the ain content area of the web page.   -->

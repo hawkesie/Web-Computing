@@ -36,7 +36,7 @@ Navigation<br><br>
 <!--  Holder for the Right sidebar  -->
 <?php
 
-if (1==2) {
+if ($GLOBALS['loggedIn']!='') {
     include "includes/scripts/rightSidebarLogged.inc";
 }
 else{

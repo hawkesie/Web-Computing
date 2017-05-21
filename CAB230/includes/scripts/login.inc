@@ -2,6 +2,7 @@
   include"config/DBconfig.inc";
 
   $GLOBALS['badUsernamePassword']='';
+  $GLOBALS['loggedIn']='';
 
   if (isset($_POST['login'])) {
     //Process the form
@@ -30,10 +31,12 @@
 
     if ($userExists == true && $result == true) {
       session_start();
+      $GLOBALS['loggedIn']='';
       $_SESSION['id'] = $userDetails[0];
       $_SESSION['name'] = $userDetails[1];
       $_SESSION['email'] = $userDetails[2];
       $_SESSION['username'] = $userDetails[3];
+      $GLOBALS['loggedIn']=$_SESSION['name'];
       #echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
     } else {
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";

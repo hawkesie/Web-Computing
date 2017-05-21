@@ -1,6 +1,5 @@
 <div id=rightbar>Right Sidebar<br><br>
-<?php 
-session_start();
-?>
+Hello 
+<?php echo $GLOBALS['loggedIn'];?>
 <br><br>
 </div>
