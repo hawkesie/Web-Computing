@@ -7,10 +7,18 @@
 <!--  Links to the css file which contains the syling instructions for the web page  -->
  <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
- <title>Brisbane Parks</title>
- <meta charset="UTF-8">
- </head>
- <body>
+<?php
+  session_start();
+  $id = $_SESSION['id'];
+  $name = $_SESSION['name'];
+  $email = $_SESSION['email'];
+  $username = $_SESSION['username'];
+?>
+
+<title>Brisbane Parks</title>
+<meta charset="UTF-8">
+</head>
+<body>
 <!--  Heading at the top of the page  -->
  <h1>Brisbane Parks</h1>
 <div id=menu></div>
@@ -32,7 +40,12 @@ Navigation<br><br>
 </div>
   
 <!-- Holder for the ain content area of the web page.   -->
-<div id=content>Text goes here<br><br>
+<div id=content>
+  Testing that session works<br><br>
+  userID = <?php echo $id ?><br>
+  name = <?php echo $name ?><br>
+  email = <?php echo $email ?><br>
+  username = <?php echo $username ?><br>
 
 </div>
 <!--  Holder for the footer of the web page  -->
