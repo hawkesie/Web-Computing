@@ -4,6 +4,7 @@
 
 <?php
 
+  include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
   include "includes/scripts/register.inc";
 

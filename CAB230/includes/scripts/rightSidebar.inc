@@ -1,4 +1,3 @@
-
 <div id=rightbar>Right Sidebar<br><br>
 <br><br>
 

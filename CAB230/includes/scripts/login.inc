@@ -1,5 +1,4 @@
 <?php
-  //include"config/DBconfig.inc";
 
   $GLOBALS['badUsernamePassword']='';
   $GLOBALS['loggedIn']='';
