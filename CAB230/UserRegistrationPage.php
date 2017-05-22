@@ -3,8 +3,10 @@
 
 <?php
   include "includes/scripts/register.inc";
-  //include "config/DBconfig.inc";
-  include "includes/scripts/login.inc"
+  
+?>
+<?php
+include "includes/scripts/login.inc"
 ?>
 <html>
  <head >
@@ -23,7 +25,7 @@
 <div id=navigation>
 Navigation<br><br>
 <!-- Links in the navigation bar on the left side of the web page -->
-<a href="UserRegistrationPage.html">Registration</a><br><br>
+<a href="UserRegistrationPage.php">Registration</a><br><br>
 <a href="SearchPage.html">Search</a><br><br>
 <a href="SampleResultsPage.html">Results</a><br><br>
 <a href="SampleIndividualItemPage.html">Item</a><br>
@@ -34,8 +36,8 @@ Navigation<br><br>
 <!--  Holder for the Right sidebar  -->
 <?php
 
-if ($GLOBALS['loggedIn']!='') {
-    include "includes/scripts/rightSidebarLogged.inc";
+if (isset($_SESSION['name'])) {
+  include "includes/scripts/rightSidebarLogged.inc";
 }
 else{
   include "includes/scripts/rightSidebar.inc";
@@ -50,33 +52,23 @@ else{
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
-    <input type="text" name="name" id="name">
-    <?php
-      checkName();
-    ?>
-  <br><br>
+    <input type="text" name="name" id="name"><br><br>
   Email:<br>
     <input type="email" name="email" id="email">
       <?php
-        checkEmailEntered();
         checkEmail();
       ?>
     <br><br>
   Username:<br>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username">
       <?php
-        checkUsernameEntered();
         checkUsername();
       ?>
     <br><br>
   Gender:<br>
     <input type="radio" name="gender" value="Male">Male
     <input type="radio" name="gender" value="Female">Female
-    <input type="radio" name="gender" value="Other">Other
-    <?php
-      checkGender();
-    ?>
-    <br><br>
+    <input type="radio" name="gender" value="Other">Other<br><br>
   Date of Birth:<br>
 
   <select name="day">
@@ -96,31 +88,14 @@ else{
     <?php for ($year = date('Y'); $year > date('Y')-100; $year--) { ?>
     <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
     <?php } ?>
-  </select>
-    <?php
-      checkBirthDate();
-    ?>
-  <br><br>
+  </select><br><br>
 
   Postcode:<br>
-    <input type="text" name="postcode" id="postcode">
-    <?php
-      checkPostcode();
-    ?>
-  <br><br>
+    <input type="text" name="postcode" id="postcode"><br><br>
   Password:<br>
-    <input type="text" name="password" id="password">
-    <?php
-      checkPassword();
-    ?>
-  <br><br>
+    <input type="text" name="password" id="password"><br><br>
   Confirm Password:<br>
-    <input type="text" name="confirmPassword" id="confirmPassword">
-    <?php
-      checkConfirmPassword();
-      checkPasswordMatch();
-    ?>
-  <br><br>
+    <input type="text" name="confirmPassword" id="confirmPassword"><br><br>
   <br>
   <input type="submit" value="Register">
 </form>

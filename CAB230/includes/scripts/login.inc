@@ -1,14 +1,19 @@
 <?php
-  //include"config/DBconfig.inc";
+  include"config/DBconfig.inc";
+  
 
   $GLOBALS['badUsernamePassword']='';
-  $GLOBALS['loggedIn']='';
-
+  if(isset($GLOBALS['loggedIn'])){
+    $GLOBALS['loggedIn']=$GLOBALS['loggedIn'];
+  }
+  else{
+    $GLOBALS['loggedIn']='';
+  }
   if (isset($_POST['login'])) {
     //Process the form
 
-    $username = $_POST["loginUsername"];
-    $submittedPassword = $_POST["loginPassword"];
+    $username = $_POST["username"];
+    $submittedPassword = $_POST["password"];
     $userExists = true;
     $matchedPasswords = false;
 
@@ -30,18 +35,28 @@
     }
 
     if ($userExists == true && $result == true) {
-      session_start();
-      $GLOBALS['loggedIn']='';
+      
       $_SESSION['id'] = $userDetails[0];
       $_SESSION['name'] = $userDetails[1];
       $_SESSION['email'] = $userDetails[2];
       $_SESSION['username'] = $userDetails[3];
       $GLOBALS['loggedIn']=$_SESSION['name'];
+<<<<<<< HEAD
       echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
+=======
+      echo "<meta http-equiv=\"refresh\">";
+>>>>>>> 90701ced97047cf1d4a2b0e005b53243fef355dc
     } else {
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }
 
     //Close the connection
     dbClose($stmt, $pdo);
+  }
+
+  function logout(){
+      $_SESSION['id'] = '';
+      $_SESSION['name'] = '';
+      $_SESSION['email'] = '';
+      $_SESSION['username'] = '';
   }
