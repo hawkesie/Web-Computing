@@ -6,7 +6,7 @@
   Username:<br>
     <input type="text" name="username"><br><br>
   Password:<br>
-    <input type="text" name="password" id="password"><br><br>
+    <input type="text" name="logpassword" id="logpassword"><br><br>
   <input type="submit" value="Login" name="login">
   <?php
 

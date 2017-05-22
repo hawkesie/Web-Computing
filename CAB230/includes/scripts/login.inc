@@ -13,7 +13,7 @@
     //Process the form
 
     $username = $_POST["username"];
-    $submittedPassword = $_POST["password"];
+    $submittedPassword = $_POST["logpassword"];
     $userExists = true;
     $matchedPasswords = false;
 
@@ -41,11 +41,7 @@
       $_SESSION['email'] = $userDetails[2];
       $_SESSION['username'] = $userDetails[3];
       $GLOBALS['loggedIn']=$_SESSION['name'];
-<<<<<<< HEAD
-      echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php\">";
-=======
       echo "<meta http-equiv=\"refresh\">";
->>>>>>> 90701ced97047cf1d4a2b0e005b53243fef355dc
     } else {
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }

@@ -3,10 +3,12 @@ Hello
 <?php echo $_SESSION['name'];?>
 <br><br>
 
-<button onclick="<?php if(isset($_SESSION['name'])){
+<button onclick="
+<?php
+	session_unset();
 	session_destroy();
-	}
-?>"
+?>
+"
 >Logout</button>
 
 
