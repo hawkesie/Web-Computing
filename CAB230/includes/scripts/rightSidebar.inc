@@ -4,9 +4,9 @@
 
 <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="loginForm" method = "post">
   Username:<br>
-    <input type="text" name="username"><br><br>
+    <input type="text" name="loginUsername"><br><br>
   Password:<br>
-    <input type="text" name="password" id="password"><br><br>
+    <input type="text" name="loginPassword"><br><br>
   <input type="submit" value="Login" name="login">
   <?php
 
