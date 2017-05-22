@@ -8,7 +8,6 @@
     <input type="text" name="loginPassword"><br><br>
   <input type="submit" value="Login" name="login">
   <?php
-
     checkUsernamePasswordCombination();
   ?>
 </form>

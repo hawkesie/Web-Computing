@@ -27,7 +27,7 @@
 <div id=navigation>
 Navigation<br><br>
 <!-- Links in the navigation bar on the left side of the web page -->
-<a href="UserRegistrationPage.html">Registration</a><br><br>
+<a href="UserRegistrationPage.php">Registration</a><br><br>
 <a href="SearchPage.html">Search</a><br><br>
 <a href="SampleResultsPage.html">Results</a><br><br>
 <a href="SampleIndividualItemPage.html">Item</a><br>
@@ -38,7 +38,7 @@ Navigation<br><br>
 <!--  Holder for the Right sidebar  -->
 <?php
 
-if ($GLOBALS['loggedIn']!='') {
+if (isset($_SESSION['name'])) {
     include "includes/scripts/rightSidebarLogged.inc";
 }
 else{

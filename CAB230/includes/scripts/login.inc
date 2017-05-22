@@ -31,6 +31,7 @@
     }
 
     if ($userExists == true && $result == true) {
+      
       $GLOBALS['loggedIn']='';
       $_SESSION['id'] = $userDetails[0];
       $_SESSION['name'] = $userDetails[1];
