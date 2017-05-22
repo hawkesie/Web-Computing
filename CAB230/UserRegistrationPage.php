@@ -3,16 +3,10 @@
 
 
 <?php
-<<<<<<< HEAD
-  include "includes/scripts/login.inc"
+
+  include "includes/scripts/login.inc";
   include "includes/scripts/register.inc";
-=======
-include "includes/scripts/login.inc";
-?>
-<?php
-  include "includes/scripts/register.inc";
-  
->>>>>>> 86b9f29d6178a4fd526d6089e30690bb359db497
+
 ?>
 
 <html>
@@ -57,7 +51,7 @@ else{
 <div id=content>Registration<br><br>
 
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
-<form onsubmit="return checkValues();" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
+<form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
     <input type="text" name="name" id="name">
     <?php
@@ -131,7 +125,7 @@ else{
     ?>
   <br><br>
   <br>
-  <input type="submit" value="submit">
+  <input type="submit" value="Register">
 </form>
 
 </div>
