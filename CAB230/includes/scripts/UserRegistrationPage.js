@@ -1,6 +1,7 @@
 // Function for validating the elements on the user registration page
 function checkValues(){
 	var name = document.getElementById('name').value;
+	var registerUsername = document.getElementByID('username');
 	var password = document.getElementById('password').value;
 	var confirmPassword= document.getElementById('confirmPassword').value;
 	var email= document.getElementById('email').value;
@@ -13,10 +14,10 @@ function checkValues(){
 	}
 	
 	//Alerts if password field is empty
-	if(password==""){
-		window.alert("Password field is empty");
-		return false;
-	}
+	// if(password==""){
+	// 	window.alert("Password field is empty");
+	// 	return false;
+	// }
 	
 // 	Alerts if passwords don't match
 	if(password != confirmPassword){

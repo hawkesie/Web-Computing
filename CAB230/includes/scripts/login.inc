@@ -1,5 +1,5 @@
 <?php
-  include"config/DBconfig.inc";
+  //include"config/DBconfig.inc";
 
   $GLOBALS['badUsernamePassword']='';
   $GLOBALS['loggedIn']='';
@@ -7,8 +7,8 @@
   if (isset($_POST['login'])) {
     //Process the form
 
-    $username = $_POST["username"];
-    $submittedPassword = $_POST["password"];
+    $username = $_POST["loginUsername"];
+    $submittedPassword = $_POST["loginPassword"];
     $userExists = true;
     $matchedPasswords = false;
 

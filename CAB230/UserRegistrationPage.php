@@ -3,10 +3,8 @@
 
 <?php
   include "includes/scripts/register.inc";
-  
-?>
-<?php
-include "includes/scripts/login.inc"
+  //include "config/DBconfig.inc";
+  include "includes/scripts/login.inc"
 ?>
 <html>
  <head >
@@ -52,23 +50,33 @@ else{
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues();" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
-    <input type="text" name="name" id="name"><br><br>
+    <input type="text" name="name" id="name">
+    <?php
+      checkName();
+    ?>
+  <br><br>
   Email:<br>
     <input type="email" name="email" id="email">
       <?php
+        checkEmailEntered();
         checkEmail();
       ?>
     <br><br>
   Username:<br>
-    <input type="text" name="username">
+    <input type="text" name="username" id="username">
       <?php
+        checkUsernameEntered();
         checkUsername();
       ?>
     <br><br>
   Gender:<br>
     <input type="radio" name="gender" value="Male">Male
     <input type="radio" name="gender" value="Female">Female
-    <input type="radio" name="gender" value="Other">Other<br><br>
+    <input type="radio" name="gender" value="Other">Other
+    <?php
+      checkGender();
+    ?>
+    <br><br>
   Date of Birth:<br>
 
   <select name="day">
@@ -88,14 +96,31 @@ else{
     <?php for ($year = date('Y'); $year > date('Y')-100; $year--) { ?>
     <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
     <?php } ?>
-  </select><br><br>
+  </select>
+    <?php
+      checkBirthDate();
+    ?>
+  <br><br>
 
   Postcode:<br>
-    <input type="text" name="postcode" id="postcode"><br><br>
+    <input type="text" name="postcode" id="postcode">
+    <?php
+      checkPostcode();
+    ?>
+  <br><br>
   Password:<br>
-    <input type="text" name="password" id="password"><br><br>
+    <input type="text" name="password" id="password">
+    <?php
+      checkPassword();
+    ?>
+  <br><br>
   Confirm Password:<br>
-    <input type="text" name="confirmPassword" id="confirmPassword"><br><br>
+    <input type="text" name="confirmPassword" id="confirmPassword">
+    <?php
+      checkConfirmPassword();
+      checkPasswordMatch();
+    ?>
+  <br><br>
   <br>
   <input type="submit" value="submit">
 </form>
