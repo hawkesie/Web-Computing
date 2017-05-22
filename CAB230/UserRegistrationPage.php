@@ -48,7 +48,7 @@ else{
 <div id=content>Registration<br><br>
 
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
-<form onsubmit="return checkValues();" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
+<form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
     <input type="text" name="name" id="name">
     <?php
@@ -122,7 +122,7 @@ else{
     ?>
   <br><br>
   <br>
-  <input type="submit" value="submit">
+  <input type="submit" value="Register">
 </form>
 
 </div>
