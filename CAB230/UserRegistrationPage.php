@@ -83,19 +83,19 @@ else{
     <br><br>
   Date of Birth:<br>
 
-  <select name="day">
+  <select name="day" id="day">
     <option value="">Day</option>
     <?php for ($day = 1; $day <= 31; $day++) { ?>
     <option value="<?php echo strlen($day)==1 ? '0'.$day : $day; ?>"><?php echo strlen($day)==1 ? '0'.$day : $day; ?></option>
     <?php } ?>
   </select>
-  <select name="month">
+  <select name="month" id="month">
     <option value="">Month</option>
     <?php for ($month = 1; $month <= 12; $month++) { ?>
     <option value="<?php echo strlen($month)==1 ? '0'.$month : $month; ?>"><?php echo strlen($month)==1 ? '0'.$month : $month; ?></option>
     <?php } ?>
   </select>
-  <select name="year">
+  <select name="year" id="year">
     <option value="">Year</option>
     <?php for ($year = date('Y'); $year > date('Y')-100; $year--) { ?>
     <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
