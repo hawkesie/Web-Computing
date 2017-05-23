@@ -31,7 +31,7 @@ Navigation<br><br>
 <a href="UserRegistrationPage.php">Registration</a><br><br>
 <a href="search.php">Search</a><br><br>
 <a href="SampleResultsPage.html">Results</a><br><br>
-<a href="SampleIndividualItemPage.html">Item</a><br>
+<a href="itemPage.php">Item</a><br>
 
 
 
@@ -123,8 +123,13 @@ if (isset($_POST['submit'])){
   if($pdoExec){
     if($stmt->rowCount()>0){
       foreach($stmt as $row){
-        $itemName=$row['Street'];
-        echo $itemName."<br>";
+        $itemName=$row['Name'];
+        $itemID=$row['id'];
+        $latitude=$row['Latitude'];
+        $longitude=$row['Longitude'];
+        ?>
+        <a href="http://localhost/web-computing/CAB230/itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a><br>
+        <?php
       }
     }
     else{
