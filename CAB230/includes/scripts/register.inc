@@ -1,5 +1,5 @@
 <?php
-	include "includes/functions.inc";
+	
 	
 	$GLOBALS['checkEmail']='';
 	$GLOBALS['checkEmailEntered']='';

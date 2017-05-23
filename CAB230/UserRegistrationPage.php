@@ -28,7 +28,7 @@
 Navigation<br><br>
 <!-- Links in the navigation bar on the left side of the web page -->
 <a href="UserRegistrationPage.php">Registration</a><br><br>
-<a href="SearchPage.html">Search</a><br><br>
+<a href="search.php">Search</a><br><br>
 <a href="SampleResultsPage.html">Results</a><br><br>
 <a href="SampleIndividualItemPage.html">Item</a><br>
 

@@ -1,5 +1,5 @@
 <?php
-
+  include "includes/functions.inc";
   $GLOBALS['badUsernamePassword']='';
   $GLOBALS['loggedIn']='';
 
