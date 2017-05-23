@@ -114,8 +114,8 @@
 	    	if ($available_entry == true && $correct_form == true) {
 		    	$q = "INSERT INTO users(name,email,username,birthdate,gender,postcode,password)VALUES(:name,:email,:username,:birthdate,:gender,:postcode,:password);";
 			    	
-			    $query = $pdo->prepare($q);
-			    $query->execute(array(
+			    $stmt = $pdo->prepare($q);
+			    $stmt->execute(array(
 			    	":name"=>$name,
 			   		":email"=>$email,
 			   		":username"=>$username,
@@ -125,6 +125,7 @@
 			   		":password"=>$hashedPassword)
 			    	);
 			}
+			dbClose($pdo, $stmt);
 		}
 	}
 ?>

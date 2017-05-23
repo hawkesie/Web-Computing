@@ -44,22 +44,50 @@ else{
   include "includes/scripts/rightSidebar.inc";
 }
 
+//$suburbArray = array();
+$pdo = dbConnect();
 
+$sql = "SELECT DISTINCT suburb FROM parks ";
+$sql.= "ORDER BY suburb ASC;";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
+$itemName="";
 ?>
+
+<!-- Holder for the ain content area of the web page.   -->
+<div id=content>Search<br><br>
+<form action="search.php" method="post">
+  <input type="text" name="itemName" id="itemName" value="<?php echo $itemName;?>"> Name<br><br>
+
+  <select name="suburb" id="suburb">
+    <option value=""> Suburb</option>
+    <?php foreach($suburbArray as $suburb => $value) { ?>
+      <option value="<?php echo $suburb ?>"><?php echo $value ?></option>
+    <?php }?>
+  </select>
+
+  <input type="text" name="rating" id="rating"> Rating
+  <input type="text" name="location" id="location"> Location<br><br>
+  <input type="submit" name="submit" value="Search">
+</form><br><br>
+
 
 <?php
 
-$itemName="";
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
-  $itemName = $_POST['itemName'];
+  $itemName = "%".$_POST['itemName']."%";
   $pdoQuery = "SELECT * FROM parks WHERE Name LIKE :itemName";
-  $pdoResult = $pdo->prepare($pdoQuery);
-  $pdoExec = $pdoResult->execute(array(":itemName"=>$itemName));
+  $stmt = $pdo->prepare($pdoQuery);
+  $pdoExec = $stmt->execute(array(":itemName"=>$itemName));
 
   if($pdoExec){
-    if($pdoResult->rowCount()>0){
-      foreach($pdoResult as $row){
+    if($stmt->rowCount()>0){
+      foreach($stmt as $row){
         $itemName=$row['Street'];
         echo $itemName;
       }
@@ -71,20 +99,9 @@ if (isset($_POST['submit'])){
   else{
   echo 'Error';
   }
+  dbClose($pdo, $stmt);
 }
 ?>  
-<!-- Holder for the ain content area of the web page.   -->
-<div id=content>Search<br><br>
-<form action="search.php" method="post">
-  <input type="text" name="itemName" id="itemName" value="<?php echo $itemName;?>">Name<br><br>
-  <input type="text" name="suburb" id="suburb">Suburb
-  <input type="text" name="rating" id="rating">Rating
-  <input type="text" name="location" id="location">Location<br><br>
-  <input type="submit" name="submit" value="Search">
-</form>
-
-
-
 
 
 </div>
