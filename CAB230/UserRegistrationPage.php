@@ -54,20 +54,20 @@ else{
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
    Name:<br>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="<?php echo isset($_POST['name']) ? $_POST['name'] : '' ?>">
     <?php
       checkName();
     ?>
   <br><br>
   Email:<br>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
       <?php
         checkEmailEntered();
         checkEmail();
       ?>
     <br><br>
   Username:<br>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>">
       <?php
         checkUsernameEntered();
         checkUsername();
@@ -107,7 +107,7 @@ else{
   <br><br>
 
   Postcode:<br>
-    <input type="text" name="postcode" id="postcode">
+    <input type="text" name="postcode" id="postcode" value="<?php echo isset($_POST['postcode']) ? $_POST['postcode'] : '' ?>">
     <?php
       checkPostcode();
     ?>

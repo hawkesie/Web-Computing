@@ -64,7 +64,6 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 <form action="search.php" method="post">
   <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? $_POST['itemName'] : '' ?>"> Name<br><br>
 
-
   <select name="suburb" id="suburb">
 
     <?php if (!empty($_POST['suburb'])) { ?>
@@ -75,10 +74,10 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     <?php foreach($suburbArray as $suburb => $value) { ?>
       <option value="<?php echo $value ?>"><?php echo $value ?></option>
     <?php } ?>
-  </select>
+  </select> Suburb<br><br>
 
-  <input type="text" name="rating" id="rating"> Rating
-  <input type="text" name="location" id="location"> Location<br><br>
+  <input type="text" name="rating" id="rating" value="<?php echo isset($_POST['rating']) ? $_POST['rating'] : '' ?>"> Rating<br><br>
+  <input type="text" name="location" id="location" value="<?php echo isset($_POST['location']) ? $_POST['location'] : '' ?>"> Location<br><br>
   <input type="submit" name="submit" value="Search">
 </form><br><br>
 
