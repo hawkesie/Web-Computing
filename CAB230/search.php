@@ -5,6 +5,7 @@
 
   include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
+
 ?>
 
 
@@ -55,19 +56,25 @@ $stmt->execute();
 
 $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
-$itemName="";
+//$itemName="";
 ?>
 
 <!-- Holder for the ain content area of the web page.   -->
 <div id=content>Search<br><br>
 <form action="search.php" method="post">
-  <input type="text" name="itemName" id="itemName" value="<?php echo $itemName;?>"> Name<br><br>
+  <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? $_POST['itemName'] : '' ?>"> Name<br><br>
+
 
   <select name="suburb" id="suburb">
-    <option value=""> Suburb</option>
+
+    <?php if (!empty($_POST['suburb'])) { ?>
+      <option value="<?php echo $_POST["suburb"] ?>"><?php echo $_POST["suburb"] ?></option>
+    <?php } ?>
+
+    <option value=""></option>
     <?php foreach($suburbArray as $suburb => $value) { ?>
-      <option value="<?php echo $suburb ?>"><?php echo $value ?></option>
-    <?php }?>
+      <option value="<?php echo $value ?>"><?php echo $value ?></option>
+    <?php } ?>
   </select>
 
   <input type="text" name="rating" id="rating"> Rating
@@ -81,6 +88,7 @@ $itemName="";
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
   $itemName = "%".$_POST['itemName']."%";
+
   $pdoQuery = "SELECT * FROM parks WHERE Name LIKE :itemName";
   $stmt = $pdo->prepare($pdoQuery);
   $pdoExec = $stmt->execute(array(":itemName"=>$itemName));
