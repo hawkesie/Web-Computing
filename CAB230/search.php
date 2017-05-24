@@ -79,14 +79,14 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     </select><br><br>
 
   Rating<br>
-    <label><input type="checkbox" name="checkAll" onClick="toggle(this)"/>Select/Deselect All</label>
+    <label><input type="checkbox" name="checkAll" onClick="toggle(this)"/>Any</label>
 
     <div id="checkboxlist">
-        <label><input type="checkbox" value="1" name="rating1" class="rating"/>1</label>
-        <label><input type="checkbox" value="2" name="rating2" class="rating"/>2</label>
-        <label><input type="checkbox" value="3" name="rating3" class="rating"/>3</label>
-        <label><input type="checkbox" value="4" name="rating4" class="rating"/>4</label>
-        <label><input type="checkbox" value="5" name="rating5" class="rating"/>5</label>
+        <label><input type="checkbox" value="1" name="rating[]" class="rating"/>1</label>
+        <label><input type="checkbox" value="2" name="rating[]" class="rating"/>2</label>
+        <label><input type="checkbox" value="3" name="rating[]" class="rating"/>3</label>
+        <label><input type="checkbox" value="4" name="rating[]" class="rating"/>4</label>
+        <label><input type="checkbox" value="5" name="rating[]" class="rating"/>5</label>
     </div>
     <br>
   Distance from me in km (Location must be enabled)<br>
@@ -105,12 +105,26 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
 
-  $pdoQuery = "SELECT * FROM parks WHERE name LIKE :itemName ";
+  $pdoQuery = "SELECT * FROM parks ";
+
+  if(!empty($_POST['rating'])) {
+    $pdoQuery.= "INNER JOIN reviews ON parks.id = reviews.parkID ";
+  }
+
+  $pdoQuery.= "WHERE name LIKE :itemName ";
   $pdoQuery.= "AND Suburb LIKE :searchSuburb ";
+
   if (!empty($_POST['location'])) {
     $pdoQuery.= "AND ( 6371 * acos( cos( radians(:latitude) ) * cos( radians( latitude ) ) 
-* cos( radians( longitude ) - radians(:longitude) ) + sin( radians(:latitude) ) * sin(radians(latitude)) ) ) <= :location";
+* cos( radians( longitude ) - radians(:longitude) ) + sin( radians(:latitude) ) * sin(radians(latitude)) ) ) <= :location ";
   }
+
+  if(!empty($_POST['rating'])) {
+    $pdoQuery.= "AND rating IN ";
+    $ratingArray = implode(",", $_POST['rating']);
+    $pdoQuery.= $ratingArray;
+  }
+
   $stmt = $pdo->prepare($pdoQuery);
 
   $itemName = "%".$_POST['itemName']."%";
