@@ -147,16 +147,57 @@ if (isset($_POST['submit'])){
   }
 
   if($pdoExec){
-    if($stmt->rowCount()>0){
-      foreach($stmt as $row){
-        $itemName=$row['Name'];
-        $itemID=$row['id'];
-        $latitude=$row['Latitude'];
-        $longitude=$row['Longitude'];
-        ?>
-        <a href="http://localhost/web-computing/CAB230/itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a><br>
-        <?php
+
+      echo("Showing results");
+      if (!empty($_POST['itemName'])) {
+        echo(" containing \"" . $_POST['itemName'] . "\"");
       }
+      if (!empty($_POST['suburb'])) {
+        echo(" in " . $_POST['suburb']);
+      }
+      if (!empty($_POST['rating'])) {
+        echo(" with ratings of " . implode(", ", $_POST['rating']));
+      }
+      if (!empty($_POST['location'])) {
+        echo(" within " . $_POST['location'] . " kilometers of your location");
+      }
+      echo(".<br><br>");
+
+
+
+
+    if($stmt->rowCount()>0){
+      echo("Found " . $stmt->rowCount() . " result");
+      if($stmt->rowCount() > 1) {
+        echo("s");
+      }
+      echo(".<br><br>");
+      ?>
+
+      <table id="searchResults">
+        <tr>
+            <th>Name</th>
+            <th>Suburb</th> 
+            <th>Street</th>
+        </tr>
+
+        <?php
+        foreach($stmt as $row){
+          $itemName=$row['Name'];
+          $itemID=$row['id'];
+          $latitude=$row['Latitude'];
+          $longitude=$row['Longitude'];
+          $suburbResult=$row['Suburb'];
+          $streetResult=$row['Street'];
+          echo("<tr>");
+            ?>
+            <td><a href="http://localhost/web-computing/CAB230/itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a></td>
+            <?php
+            echo("<td>" . $suburbResult . "</td>");
+            echo("<td>" . $streetResult . "</td>");
+          echo("</tr>");
+        }
+        echo("</table>");
     }
     else{
       echo'Did not find anything';
