@@ -5,6 +5,29 @@ function toggle(source) {
   }
 }
 
+function locationToggle() {
+	if (document.getElementById("location").readOnly == true) {
+		document.getElementById("location").readOnly = false;
+		requestCurrentPosition();
+	} else {
+		document.getElementById("location").readOnly = true;
+		document.getElementById("location").value = "";
+	}
+}
+
+function requestCurrentPosition() {
+    if (navigator.geolocation) {
+    	navigator.geolocation.getCurrentPosition(useGeoData);
+    }
+}
+
+ function useGeoData(position) {
+    var longitude = position.coords.longitude;
+    var latitude = position.coords.latitude;
+    document.getElementById("latitude").value = latitude;
+    document.getElementById("longitude").value = longitude;
+  }
+
 // Function to retrieve the coordinates of the current location
 
 function getLocation() {
@@ -20,10 +43,8 @@ function showPosition(position) {
 	document.getElementById("status").innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;	
 
 	// display on a map
-	var latlon = position.coords.latitude + "," + position.coords.longitude;
 	var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
 	document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-	
 }
 
 // Function to display an error if there are any issues accessing the current location

@@ -14,7 +14,6 @@
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
  <script type="text/javascript" src="includes/scripts/search.js"></script>
- <script type="text/javascript" src="includes/scripts/geolocation.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
  <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
@@ -90,14 +89,15 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
         <label><input type="checkbox" value="5" name="rating5" class="rating"/>5</label>
     </div>
     <br>
-  Distance from me (km)<br>
-    <input type="text" name="location" id="location" value="<?php echo isset($_POST['location']) ? $_POST['location'] : '' ?>"><br><br>
-  <input type="submit" name="submit" value="Search" onclick="getLocation();">
-</form><br><br>
-  <input type="submit" name="get Location" value="Get Location" onclick="getLocation();">
+  Distance from me in km (Location must be enabled)<br>
+    <input type="text" name="location" id="location" value="<?php echo isset($_POST['location']) ? $_POST['location'] : '' ?>" readonly>
+    <input type="checkbox" value="Get My Location" onClick="locationToggle()">Enable<br><br>
 
-<div id="status"></div>
-<div id="mapholder"></div>
+  <input type="hidden" name="latitude" id="latitude"></input>
+  <input type="hidden" name="longitude" id="longitude"></input>
+
+  <input type="submit" name="submit" value="Search">
+</form><br><br>
 <?php
 
 
@@ -105,20 +105,32 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
 
-  $latitude = -27.451570399999998;
-  $longitude = 153.0059279;
-
   $pdoQuery = "SELECT * FROM parks WHERE name LIKE :itemName ";
   $pdoQuery.= "AND Suburb LIKE :searchSuburb ";
-  //$pdoQuery.= "AND (ACOS(SIN(RADIANS('latitude')) * SIN( RADIANS($latitude)) + COS(RADIANS('latitude')) * COS(RADIANS( $latitude)) * COS(RADIANS('longitude') - RADIANS($longitude))) * 6380) <= 5";
+  if (!empty($_POST['location'])) {
+    $pdoQuery.= "AND ( 6371 * acos( cos( radians(:latitude) ) * cos( radians( latitude ) ) 
+* cos( radians( longitude ) - radians(:longitude) ) + sin( radians(:latitude) ) * sin(radians(latitude)) ) ) <= :location";
+  }
   $stmt = $pdo->prepare($pdoQuery);
 
   $itemName = "%".$_POST['itemName']."%";
   $searchSuburb = "%".$_POST['suburb']."%";
+  $location = $_POST['location'];
+  $latitude = $_POST['latitude'];
+  $longitude = $_POST['longitude'];
 
-  $pdoExec = $stmt->execute(array(
-    ":itemName"=>$itemName,
-    ":searchSuburb"=>$searchSuburb));
+  if (!empty($_POST['location'])) {
+    $pdoExec = $stmt->execute(array(
+      ":itemName"=>$itemName,
+      ":searchSuburb"=>$searchSuburb,
+      ":latitude"=>$latitude,
+      ":longitude"=>$longitude,
+      ":location"=>$location));
+  } else {
+    $pdoExec = $stmt->execute(array(
+      ":itemName"=>$itemName,
+      ":searchSuburb"=>$searchSuburb));
+  }
 
   if($pdoExec){
     if($stmt->rowCount()>0){
