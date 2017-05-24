@@ -28,7 +28,6 @@ Navigation<br><br>
 <!-- Links in the navigation bar on the left side of the web page -->
 <a href="UserRegistrationPage.php">Registration</a><br><br>
 <a href="search.php">Search</a><br><br>
-<a href="SampleResultsPage.html">Results</a><br><br>
 <a href="SampleIndividualItemPage.html">Item</a><br>
 
 </div>
@@ -50,6 +49,8 @@ else{
 <?php
 if(isset($_GET['itemID'])){
 $ID=$_GET['itemID'];
+$_SESSION['itemID']=$ID;
+
 
 
 $pdo = dbConnect();
@@ -80,7 +81,8 @@ echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
 <br><br>
 <?php
 if(isset($_SESSION['name'])){
-  include "includes/scripts/reviewContent.inc";;
+  
+  include "includes/scripts/reviewContent.inc";
 }
 ?>
 
