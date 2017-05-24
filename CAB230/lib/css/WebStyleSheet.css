@@ -115,3 +115,18 @@ This includes setting the fonts, setting the font color, background color, width
 	border-collapse: collapse;
 	min-width: 325px;
 }
+
+#reviews{
+	
+	border-top: 1px solid black;
+	min-width: 325px;
+}
+
+#reviews,td{
+	border-bottom: 1px solid black;
+	min-width: 325px;
+}
+
+#top{
+	font-weight: bold;
+}

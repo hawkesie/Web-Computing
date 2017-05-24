@@ -48,33 +48,31 @@ else{
 
 <?php
 if(isset($_GET['itemID'])){
-$ID=$_GET['itemID'];
-$_SESSION['itemID']=$ID;
+  $ID=$_GET['itemID'];
+  $_SESSION['itemID']=$ID;
 
+  $pdo = dbConnect();
 
+  //Get park information from ID in the URL. ID is unique so there shouldnt be an error.
+  $pdoQuery = "SELECT * FROM parks WHERE id LIKE $ID";
+  $stmt = $pdo->prepare($pdoQuery);
+  $pdoExec = $stmt->execute();
+  foreach($stmt as $row){
+          $itemName=$row['Name'];
+          $itemID=$row['id'];
+          $street=$row['Street'];
+          $suburb=$row['Suburb'];
+          $latitude=$row['Latitude'];
+          $longitude=$row['Longitude'];
+          }
 
-$pdo = dbConnect();
+  echo $itemName.' is in '.$suburb;
+  echo'<br><br>';
 
-//Get park information from ID in the URL. ID is unique so there shouldnt be an error.
-$pdoQuery = "SELECT * FROM parks WHERE id LIKE $ID";
-$stmt = $pdo->prepare($pdoQuery);
-$pdoExec = $stmt->execute();
-foreach($stmt as $row){
-        $itemName=$row['Name'];
-        $itemID=$row['id'];
-        $street=$row['Street'];
-        $suburb=$row['Suburb'];
-        $latitude=$row['Latitude'];
-        $longitude=$row['Longitude'];
-        }
-
-echo $itemName.' is in '.$suburb;
-echo'<br><br>';
-
-//Generate google map image of park
-$imgurl='http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.'&zoom=14&size=400x300&sensor=false';
-$imageData = base64_encode(file_get_contents($imgurl));
-echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
+  //Generate google map image of park
+  $imgurl='http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.'&zoom=14&size=400x300&sensor=false';
+  $imageData = base64_encode(file_get_contents($imgurl));
+  echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
 }
 ?>
 
@@ -85,6 +83,47 @@ if(isset($_SESSION['name'])){
   include "includes/scripts/reviewContent.inc";
 }
 ?>
+<br><br>
+
+<?php
+if(isset($_GET['itemID'])){
+  $itemID=$_GET['itemID'];
+  $pdo = dbConnect();
+  $pdoQ = "SELECT * FROM reviews INNER JOIN users ON users.id = reviews.userID
+  WHERE parkID = $itemID";
+  $sub = $pdo->prepare($pdoQ);
+  $pdoExec = $sub->execute();
+  echo'<div>Reviews:';
+  echo '<table id="reviews">';
+  echo '<tr id="top"><td>Comments';
+  echo"<td>User</td>";
+  echo"<td>Rating<br></td></tr>";
+
+  foreach($sub as $row){
+          $reviewID=$row['reviewID'];
+          $userID=$row['userID'];
+          $review=$row['review'];
+          $rating=$row['rating'];
+          $reviewDate=$row['reviewDate'];
+          $userName=$row['name'];
+
+    echo"<tr><td>";
+    echo"$review</td>";
+
+    echo"<td>$userName<br></td>";
+    echo"<td>$rating<br></td>";
+      
+    echo"</tr>";
+
+
+        }
+        echo'</table>';
+
+}
+
+?>
+</div>
+
 
 </div>
 
