@@ -105,7 +105,7 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
 
-  $pdoQuery = "SELECT * FROM parks ";
+  $pdoQuery = "SELECT DISTINCT id, Name, Street, Suburb, Latitude, Longitude FROM parks ";
 
   if(!empty($_POST['rating'])) {
     $pdoQuery.= "INNER JOIN reviews ON parks.id = reviews.parkID ";
@@ -120,9 +120,9 @@ if (isset($_POST['submit'])){
   }
 
   if(!empty($_POST['rating'])) {
-    $pdoQuery.= "AND rating IN ";
+    $pdoQuery.= "AND rating IN ( ";
     $ratingArray = implode(",", $_POST['rating']);
-    $pdoQuery.= $ratingArray;
+    $pdoQuery.= $ratingArray." )";
   }
 
   $stmt = $pdo->prepare($pdoQuery);
