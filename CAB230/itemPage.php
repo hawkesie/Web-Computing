@@ -52,6 +52,7 @@ $ID=$_GET['itemID'];
 $_SESSION['itemID']=$ID;
 
 
+
 $pdo = dbConnect();
 
 //Get park information from ID in the URL. ID is unique so there shouldnt be an error.

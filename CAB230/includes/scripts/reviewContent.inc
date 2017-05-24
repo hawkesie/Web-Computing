@@ -1,6 +1,6 @@
 Write a review<br>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="reviewForm" method = "post">
+<form name="reviewForm" method = "post">
 <textarea rows="4" cols="50" name="textbox"></textarea><br><br>
 
  Rate:<br>

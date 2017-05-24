@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST['submit'])){
+	if (isset($_POST['rating'])){
 	$textbox=$_POST['textbox'];
 	$rating = $_POST['rating'];
 	date_default_timezone_set('Australia/Melbourne');
@@ -16,8 +17,12 @@ if(isset($_POST['submit'])){
 			    	":rating"=>$rating,
 			    	":reviewDate"=>$date)			    	
 			    	);
+	}
+	else{
+	echo 'Please select a rating';
 
-	
+	}
+
 }
 
 
