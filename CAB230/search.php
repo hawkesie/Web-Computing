@@ -90,8 +90,8 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     </div>
     <br>
   Distance from me in km (Location must be enabled)<br>
-    <input type="text" name="location" id="location" value="<?php echo isset($_POST['location']) ? $_POST['location'] : '' ?>" readonly>
-    <input type="checkbox" value="Get My Location" onClick="locationToggle()">Enable<br><br>
+    <input type="text" name="location" id="location" readonly>
+    <input type="checkbox" onClick="locationToggle()">Enable<br><br>
 
   <input type="hidden" name="latitude" id="latitude"></input>
   <input type="hidden" name="longitude" id="longitude"></input>
