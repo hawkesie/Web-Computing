@@ -4,6 +4,7 @@
 <?php
   include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
+  include "includes/scripts/review.inc";
 ?>
 
 
@@ -76,7 +77,15 @@ echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
 }
 ?>
 
+<br><br>
+<?php
+if(isset($_SESSION['name'])){
+  include "includes/scripts/reviewContent.inc";;
+}
+?>
+
 </div>
+
 <!--  Holder for the footer of the web page  -->
 <div id=footer>Footer</div>
  </body>
