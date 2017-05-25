@@ -11,7 +11,7 @@
 <html>
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
- <script type="text/javascript" src="includes/scripts/search.js"></script>
+  <script type="text/javascript" src="includes/scripts/search.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
  <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
@@ -56,7 +56,7 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
 <!-- Holder for the ain content area of the web page.   -->
 <div id=content>Search<br><br>
-<form action="search.php" method="post">
+<form action="search.php" method="post" onSubmit="initMap()">
   Name<br>
     <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? $_POST['itemName'] : '' ?>"><br><br>
 
@@ -93,11 +93,17 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
   <input type="submit" name="submit" value="Search">
 </form><br><br>
+
+<div id="map"></div>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
+</script>
 <?php
 
 
 
 if (isset($_POST['submit'])){
+
   $pdo = dbConnect();
 
   $pdoQuery = "SELECT DISTINCT id, Name, Street, Suburb, AvgRating, Latitude, Longitude FROM parks ";

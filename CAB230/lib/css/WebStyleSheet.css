@@ -130,3 +130,8 @@ This includes setting the fonts, setting the font color, background color, width
 #top{
 	font-weight: bold;
 }
+
+#map{
+	height: 400px;
+	width: 100%;
+}

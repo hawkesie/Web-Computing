@@ -66,3 +66,20 @@ function showError(error) {
 	}
 	document.getElementById("status").innerHTML = msg;
 }
+
+//Javascript function for adding pins on the map
+function initMap() {
+	window.alert("worked");
+	var myLatLng = {lat: -25.363, lng: 131.044};
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 4,
+	  center: myLatLng
+	});
+
+	var marker = new google.maps.Marker({
+	  position: myLatLng,
+	  map: map,
+	  title: 'Hello World!'
+	});
+}
