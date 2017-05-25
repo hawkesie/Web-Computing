@@ -84,7 +84,7 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
         <label><input type="checkbox" value="5" name="rating[]" class="rating"/>5</label>
     </div>
     <br>
-  Distance from me in km (Location must be enabled)<br>
+  Maximum distance in kilometres (Location must be enabled)<br>
     <input type="text" name="location" id="location" readonly>
     <input type="checkbox" onClick="locationToggle()">Enable<br><br>
 
@@ -102,10 +102,6 @@ if (isset($_POST['submit'])){
 
   $pdoQuery = "SELECT DISTINCT id, Name, Street, Suburb, AvgRating, Latitude, Longitude FROM parks ";
 
-  if(!empty($_POST['rating'])) {
-    $pdoQuery.= "INNER JOIN reviews ON parks.id = reviews.parkID ";
-  }
-
   $pdoQuery.= "WHERE name LIKE :itemName ";
   $pdoQuery.= "AND Suburb LIKE :searchSuburb ";
 
@@ -115,9 +111,15 @@ if (isset($_POST['submit'])){
   }
 
   if(!empty($_POST['rating'])) {
-    $pdoQuery.= "AND AvgRating IN ( ";
+
+    $pdoQuery.= "AND (AvgRating IN ( ";
     $ratingArray = implode(",", $_POST['rating']);
-    $pdoQuery.= $ratingArray." )";
+    $pdoQuery.= $ratingArray." ) ";
+
+    if(isset($_POST['checkAll'])) {
+      $pdoQuery.= "OR AvgRating IS NULL ";
+    }
+    $pdoQuery.= ")";
   }
 
   $stmt = $pdo->prepare($pdoQuery);
