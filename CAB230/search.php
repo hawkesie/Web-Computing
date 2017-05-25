@@ -100,7 +100,7 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 if (isset($_POST['submit'])){
   $pdo = dbConnect();
 
-  $pdoQuery = "SELECT DISTINCT id, Name, Street, Suburb, Latitude, Longitude FROM parks ";
+  $pdoQuery = "SELECT DISTINCT id, Name, Street, Suburb, AvgRating, Latitude, Longitude FROM parks ";
 
   if(!empty($_POST['rating'])) {
     $pdoQuery.= "INNER JOIN reviews ON parks.id = reviews.parkID ";
@@ -115,7 +115,7 @@ if (isset($_POST['submit'])){
   }
 
   if(!empty($_POST['rating'])) {
-    $pdoQuery.= "AND rating IN ( ";
+    $pdoQuery.= "AND AvgRating IN ( ";
     $ratingArray = implode(",", $_POST['rating']);
     $pdoQuery.= $ratingArray." )";
   }
@@ -151,7 +151,7 @@ if (isset($_POST['submit'])){
         echo(" in " . $_POST['suburb']);
       }
       if (!empty($_POST['rating'])) {
-        echo(" with ratings of " . implode(", ", $_POST['rating']));
+        echo(" with average ratings of " . implode(", ", $_POST['rating']));
       }
       if (!empty($_POST['location'])) {
         echo(" within " . $_POST['location'] . " kilometers of your location");

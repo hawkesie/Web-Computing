@@ -63,6 +63,18 @@ function checkValues(){
     	return false;
     }
 
-
 }
 
+function ratingCheck() {
+	var rating = document.getElementsByName('rating');
+    var radioChecked = false;
+    for(i = 0; i < rating.length; i++) {
+    	if(rating[i].checked) {
+    		radioChecked = true;
+    	}
+    }
+    if (radioChecked == false) {
+    	window.alert("Please select a rating");
+    	return false;
+    }
+}

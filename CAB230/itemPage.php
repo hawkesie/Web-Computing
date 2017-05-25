@@ -64,9 +64,11 @@ if(isset($_GET['itemID'])){
           $suburb=$row['Suburb'];
           $latitude=$row['Latitude'];
           $longitude=$row['Longitude'];
+          $averageRating=$row['AvgRating'];
           }
 
-  echo $itemName.' is in '.$suburb;
+  echo $itemName.' is in '.$suburb."<br><br>";
+  echo "Average rating: " . $averageRating;
   echo'<br><br>';
 
   //Generate google map image of park
@@ -89,8 +91,8 @@ if(isset($_SESSION['name'])){
 if(isset($_GET['itemID'])){
   $itemID=$_GET['itemID'];
   $pdo = dbConnect();
-  $pdoQ = "SELECT * FROM reviews INNER JOIN users ON users.id = reviews.userID
-  WHERE parkID = $itemID";
+  $pdoQ = "SELECT * FROM reviews INNER JOIN users ON users.id = reviews.userID ";
+  $pdoQ.= "WHERE parkID = $itemID";
   $sub = $pdo->prepare($pdoQ);
   $pdoExec = $sub->execute();
   echo'<div>Reviews:';

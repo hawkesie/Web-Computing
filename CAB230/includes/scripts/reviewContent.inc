@@ -1,6 +1,8 @@
+<script type="text/javascript" src="includes/scripts/UserRegistrationPage.js"></script>
+
 Write a review<br>
 
-<form name="reviewForm" method = "post">
+<form onsubmit="return ratingCheck()" name="reviewForm" method = "post">
 <textarea rows="4" cols="50" name="textbox"></textarea><br><br>
 
  Rate:<br>
