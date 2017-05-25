@@ -194,7 +194,7 @@ if (isset($_POST['submit'])){
           $streetResult=$row['Street'];
           echo("<tr>");
             ?>
-            <td><a href="http://localhost/web-computing/CAB230/itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a></td>
+            <td><a href="itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a></td>
             <?php
             echo("<td>" . $suburbResult . "</td>");
             echo("<td>" . $streetResult . "</td>");

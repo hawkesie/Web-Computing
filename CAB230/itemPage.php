@@ -47,6 +47,8 @@ else{
   <!-- Open and close the status div containers -->
 
 <?php
+$GLOBAL['latitude']='';
+$GLOBAL['longitude']='';
 if(isset($_GET['itemID'])){
   $ID=$_GET['itemID'];
   $_SESSION['itemID']=$ID;
@@ -63,20 +65,45 @@ if(isset($_GET['itemID'])){
           $street=$row['Street'];
           $suburb=$row['Suburb'];
           $latitude=$row['Latitude'];
+          $GLOBAL['latitude']=$latitude;
+          
           $longitude=$row['Longitude'];
+          $GLOBAL['longitude']=$longitude;
           $averageRating=$row['AvgRating'];
+
           }
 
   echo $itemName.' is in '.$suburb."<br><br>";
   echo "Average rating: " . $averageRating;
   echo'<br><br>';
 
-  //Generate google map image of park
-  $imgurl='http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.'&zoom=14&size=400x300&sensor=false';
-  $imageData = base64_encode(file_get_contents($imgurl));
-  echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
+
 }
 ?>
+
+    <div id="map"></div>
+    <script>
+    var latitude= <?php echo $GLOBAL['latitude']; ?>;
+    var longitude= <?php echo $GLOBAL['longitude']; ?>;
+      function initMap() {
+        var myLatLng = {lat: latitude, lng: longitude};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 20,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
+    </script>
+
 
 <br><br>
 <?php
