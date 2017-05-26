@@ -43,6 +43,7 @@ else{
 <?php
 $GLOBAL['latitude']='';
 $GLOBAL['longitude']='';
+$GLOBAL['itemName']='';
 if(isset($_GET['itemID'])){
   $ID=$_GET['itemID'];
   $_SESSION['itemID']=$ID;
@@ -59,11 +60,12 @@ if(isset($_GET['itemID'])){
           $street=$row['Street'];
           $suburb=$row['Suburb'];
           $latitude=$row['Latitude'];
-          $GLOBAL['latitude']=$latitude;
-          
           $longitude=$row['Longitude'];
-          $GLOBAL['longitude']=$longitude;
           $averageRating=$row['AvgRating'];
+
+          $GLOBAL['latitude']=$latitude;
+          $GLOBAL['longitude']=$longitude;
+          $GLOBAL['itemName']=$itemName;
 
           }
 
@@ -79,6 +81,7 @@ if(isset($_GET['itemID'])){
     <script type="text/javascript">
       var latitude= <?php echo $GLOBAL['latitude']; ?>;
       var longitude= <?php echo $GLOBAL['longitude']; ?>;
+      var itemName= "<?php echo $GLOBAL['itemName']; ?>";
       initMap();
     </script>
     <script async defer
