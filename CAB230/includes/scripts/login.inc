@@ -39,11 +39,7 @@
       $_SESSION['username'] = $userDetails[3];
       $GLOBALS['loggedIn']=$_SESSION['name'];
 
-      if ($_SERVER['PHP_SELF'] == 'Web-Computing/CAB230/UserRegistrationPage.php') {
-        header("Location: index.php");
-      } else {
-        echo "<meta http-equiv=\"refresh\">";
-      }
+      echo "<meta http-equiv=\"refresh\">";
     } else {
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }
