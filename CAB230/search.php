@@ -40,7 +40,6 @@ else{
   include "includes/scripts/rightSidebar.inc";
 }
 
-//$suburbArray = array();
 $pdo = dbConnect();
 
 $sql = "SELECT DISTINCT suburb FROM parks ";
@@ -51,7 +50,6 @@ $stmt->execute();
 
 $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
-//$itemName="";
 ?>
 
 <!-- Holder for the ain content area of the web page.   -->
@@ -95,13 +93,8 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 </form><br><br>
 
 <div id="map"></div>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
-</script>
+
 <?php
-
-
-
 if (isset($_POST['submit'])){
 
   $pdo = dbConnect();
@@ -162,7 +155,11 @@ if (isset($_POST['submit'])){
         echo(" with average ratings of " . implode(", ", $_POST['rating']));
       }
       if (!empty($_POST['location'])) {
-        echo(" within " . $_POST['location'] . " kilometers of your location");
+        echo(" within " . $_POST['location'] . " kilometer");
+        if ($_POST['location'] != 1) {
+          echo("s");
+        }
+        echo(" of your location");
       }
       echo(".<br><br>");
 
@@ -183,8 +180,18 @@ if (isset($_POST['submit'])){
             <th>Suburb</th> 
             <th>Street</th>
         </tr>
+        <script type="text/javascript">
+          var latitudeArray = [];
+          var longitudeArray = [];
+          var nameArray = [];
+        </script>
 
         <?php
+
+        $php_latitudeArray = array();
+        $php_longitudeArray = array();
+        $php_nameArray = array();
+
         foreach($stmt as $row){
           $itemName=$row['Name'];
           $itemID=$row['id'];
@@ -192,6 +199,11 @@ if (isset($_POST['submit'])){
           $longitude=$row['Longitude'];
           $suburbResult=$row['Suburb'];
           $streetResult=$row['Street'];
+
+          array_push($php_latitudeArray, $latitude);
+          array_push($php_longitudeArray, $longitude);
+          array_push($php_nameArray, $itemName);
+
           echo("<tr>");
             ?>
             <td><a href="itemPage.php?itemID=<?php echo $itemID;?>"><?php echo $itemName;?></a></td>
@@ -210,13 +222,27 @@ if (isset($_POST['submit'])){
   echo 'Error';
   }
   dbClose($pdo, $stmt);
+?>
+    <script type='text/javascript'>
+    <?php
+      $js_latitudeArray = json_encode($php_latitudeArray);
+      $js_longitudeArray = json_encode($php_longitudeArray);
+      $js_nameArray = json_encode($php_nameArray);
+      echo "var latitudeArray = " . $js_latitudeArray . ";";
+      echo "var longitudeArray = " . $js_longitudeArray . ";";
+      echo "var nameArray = " . $js_nameArray . ";";
+    ?>
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
+    </script>
+<?php
 }
-?>  
+?>
 
 
 </div>
 <!--  Holder for the footer of the web page  -->
 <div id=footer>Footer</div>
  </body>
-</html> 
-
+</html

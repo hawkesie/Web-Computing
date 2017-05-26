@@ -69,17 +69,21 @@ function showError(error) {
 
 //Javascript function for adding pins on the map
 function initMap() {
-	window.alert("worked");
-	var myLatLng = {lat: -25.363, lng: 131.044};
+	var myLatLng = {lat: -27.5, lng: 153};
 
 	var map = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 4,
+	  zoom: 10,
 	  center: myLatLng
 	});
 
-	var marker = new google.maps.Marker({
-	  position: myLatLng,
-	  map: map,
-	  title: 'Hello World!'
-	});
+	for(i = 0; i < latitudeArray.length; i++) {
+
+		var myLatLng = {lat: parseFloat(latitudeArray[i]), lng: parseFloat(longitudeArray[i])};
+
+		var marker = new google.maps.Marker({
+		  position: myLatLng,
+		  map: map,
+		  title: nameArray[i]
+		});
+	}
 }

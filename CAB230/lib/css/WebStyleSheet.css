@@ -132,6 +132,5 @@ This includes setting the fonts, setting the font color, background color, width
 }
 
 #map{
-	height: 400px;
-	width: 100%;
+	height: 100%;
 }
