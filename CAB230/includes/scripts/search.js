@@ -83,7 +83,12 @@ function initMap() {
 		var marker = new google.maps.Marker({
 		  position: myLatLng,
 		  map: map,
-		  title: nameArray[i]
+		  title: nameArray[i],
+		  url:("itemPage.php?itemID=" + idArray[i])
 		});
+
+		marker.addListener('click', function() {
+          window.location.href = marker.url;
+        });
 	}
 }

@@ -184,6 +184,7 @@ if (isset($_POST['submit'])){
           var latitudeArray = [];
           var longitudeArray = [];
           var nameArray = [];
+          var idArray = [];
         </script>
 
         <?php
@@ -191,6 +192,7 @@ if (isset($_POST['submit'])){
         $php_latitudeArray = array();
         $php_longitudeArray = array();
         $php_nameArray = array();
+        $php_idArray = array();
 
         foreach($stmt as $row){
           $itemName=$row['Name'];
@@ -203,6 +205,7 @@ if (isset($_POST['submit'])){
           array_push($php_latitudeArray, $latitude);
           array_push($php_longitudeArray, $longitude);
           array_push($php_nameArray, $itemName);
+          array_push($php_idArray, $itemID);
 
           echo("<tr>");
             ?>
@@ -228,9 +231,11 @@ if (isset($_POST['submit'])){
       $js_latitudeArray = json_encode($php_latitudeArray);
       $js_longitudeArray = json_encode($php_longitudeArray);
       $js_nameArray = json_encode($php_nameArray);
+      $js_idArray = json_encode($php_idArray);
       echo "var latitudeArray = " . $js_latitudeArray . ";";
       echo "var longitudeArray = " . $js_longitudeArray . ";";
       echo "var nameArray = " . $js_nameArray . ";";
+      echo "var idArray = " . $js_idArray . ";";
     ?>
     </script>
     <script async defer
