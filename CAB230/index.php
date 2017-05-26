@@ -20,14 +20,9 @@
 <body>
 <!--  Heading at the top of the page  -->
  <h1>Brisbane Parks</h1>
-<div id=menu></div>
-<div id=navigation>
-Navigation<br><br>
-<!-- Links in the navigation bar on the left side of the web page -->
-<a href="UserRegistrationPage.html">Registration</a><br><br>
-<a href="search.php">Search</a><br><br>
-<a href="SampleResultsPage.html">Results</a><br><br>
-<a href="SampleIndividualItemPage.html">Item</a><br>
+<?php
+include "includes/partials/leftBar.inc";
+?>
 
 
 
@@ -47,7 +42,8 @@ else{
   
 <!-- Holder for the ain content area of the web page.   -->
 <div id=content>
-  
+  <h3>Welcome to Brisbane Parks</h3>
+  <p>Have a lovely day!</p>
 
 </div>
 <!--  Holder for the footer of the web page  -->
