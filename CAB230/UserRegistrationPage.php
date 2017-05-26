@@ -76,7 +76,7 @@ else{
   Gender:<br>
     <input type="radio" name="gender" value="Male">Male
     <input type="radio" name="gender" value="Female">Female
-    <input type="radio" name="gender" value="Other">Other
+    <input type="radio" name="gender" value="Other" checked="true">Other
     <?php
       checkGender();
     ?>
