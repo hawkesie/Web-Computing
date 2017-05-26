@@ -12,7 +12,7 @@
 <html>
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
- <script type="text/javascript" src="includes/scripts/search.js"></script>
+ <script type="text/javascript" src="includes/scripts/individualMap.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
  <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
@@ -82,23 +82,10 @@ if(isset($_GET['itemID'])){
 ?>
 
     <div id="map"></div>
-    <script>
-    var latitude= <?php echo $GLOBAL['latitude']; ?>;
-    var longitude= <?php echo $GLOBAL['longitude']; ?>;
-      function initMap() {
-        var myLatLng = {lat: latitude, lng: longitude};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 20,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
+    <script type="text/javascript">
+      var latitude= <?php echo $GLOBAL['latitude']; ?>;
+      var longitude= <?php echo $GLOBAL['longitude']; ?>;
+      initMap();
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
