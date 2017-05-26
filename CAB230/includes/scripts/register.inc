@@ -20,57 +20,57 @@
 		$correct_form = true;
 		$available_entry = true;
 
-		if(!empty($_POST['name'])) {
-			$name = $_POST["name"];
+		if(!empty(htmlspecialchars($_POST['name']))) {
+			$name = htmlspecialchars($_POST["name"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkName']="<span style='color:red;'>Back end validation failed. Please enter your name!</span>";
 		}
 
-		if(!empty($_POST['email'])) {
-			$email = $_POST["email"];
+		if(!empty(htmlspecialchars($_POST['email']))) {
+			$email = htmlspecialchars($_POST["email"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkEmailEntered']="<span style='color:red;'>Back end validation failed. Please enter your email!</span>";
 		}
 
-		if(!empty($_POST['username'])) {
-			$username = $_POST["username"];
+		if(!empty(htmlspecialchars($_POST['username']))) {
+			$username = htmlspecialchars($_POST["username"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkUsernameEntered']="<span style='color:red;'>Back end validation failed. Please enter a username!</span>";
 		}
 
-	    if((!empty($_POST['year'])) && (!empty($_POST['month'])) && (!empty($_POST['day']))) {
-		    $birthdate = ($_POST['year']) . '-' . ($_POST['month']) . '-' . ($_POST['day']);
+	    if((!empty(htmlspecialchars($_POST['year']))) && (!empty(htmlspecialchars($_POST['month']))) && (!empty(htmlspecialchars($_POST['day'])))) {
+		    $birthdate = (htmlspecialchars($_POST['year'])) . '-' . (htmlspecialchars($_POST['month'])) . '-' . (htmlspecialchars($_POST['day']));
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkBirthDate']="<span style='color:red;'>Back end validation failed. Please select your birthdate!</span>";
 		}
 
-		if(!empty($_POST['postcode'])) {
-			$postcode = $_POST["postcode"];
+		if(!empty(htmlspecialchars($_POST['postcode']))) {
+			$postcode = htmlspecialchars($_POST["postcode"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkPostcode']="<span style='color:red;'>Back end validation failed. Please enter your postcode!</span>";
 		}
 
-		if(!empty($_POST['password'])) {
-			$password = $_POST["password"];
+		if(!empty(htmlspecialchars($_POST['password']))) {
+			$password = htmlspecialchars($_POST["password"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkPassword']="<span style='color:red;'>Back end validation failed. Please enter a password!</span>";
 		}
 
-		if(!empty($_POST['confirmPassword'])) {
-			$confirmPassword = $_POST["confirmPassword"];
+		if(!empty(htmlspecialchars($_POST['confirmPassword']))) {
+			$confirmPassword = htmlspecialchars($_POST["confirmPassword"]);
 		} else {
 			$correct_form = false;
     		$GLOBALS['checkConfirmPassword']="<span style='color:red;'>Back end validation failed. Please confirm your password!</span>";
 		}
 
-	    if(!empty($_POST['gender'])) {
-	        $gender = $_POST['gender'];
+	    if(!empty(htmlspecialchars($_POST['gender']))) {
+	        $gender = htmlspecialchars($_POST['gender']);
 	    } else {
 	    	$correct_form = false;
     		$GLOBALS['checkGender']="<span style='color:red;'>Back end validation failed. Please select your gender!</span>";

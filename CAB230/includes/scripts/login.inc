@@ -7,8 +7,8 @@
     //Process the form
 
 
-    $username = $_POST["loginUsername"];
-    $submittedPassword = $_POST["loginPassword"];
+    $username = htmlspecialchars($_POST["loginUsername"]);
+    $submittedPassword = htmlspecialchars($_POST["loginPassword"]);
 
     $userExists = true;
     $matchedPasswords = false;

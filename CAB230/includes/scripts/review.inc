@@ -2,7 +2,7 @@
 
 if(isset($_POST['submit'])){
 	if (isset($_POST['rating'])){
-		$textbox=$_POST['textbox'];
+		$textbox=htmlspecialchars($_POST['textbox']);
 		$rating = $_POST['rating'];
 		date_default_timezone_set('Australia/Melbourne');
 		$date=date('Y-m-d');

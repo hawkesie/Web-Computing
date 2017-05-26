@@ -51,13 +51,13 @@ $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 <div id=content>Search<br><br>
 <form action="search.php" method="post" onSubmit="initMap()">
   Name<br>
-    <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? $_POST['itemName'] : '' ?>"><br><br>
+    <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? htmlspecialchars($_POST['itemName']) : '' ?>"><br><br>
 
   Suburb<br>
     <select name="suburb" id="suburb">
 
       <?php if (!empty($_POST['suburb'])) { ?>
-        <option value="<?php echo $_POST["suburb"] ?>"><?php echo $_POST["suburb"] ?></option>
+        <option value="<?php echo $_POST["suburb"] ?>"><?php echo htmlspecialchars($_POST["suburb"]) ?></option>
       <?php } ?>
 
       <option value=""></option>
@@ -99,7 +99,9 @@ if (isset($_POST['submit'])){
   $pdoQuery.= "WHERE name LIKE :itemName ";
   $pdoQuery.= "AND Suburb LIKE :searchSuburb ";
 
-  if (!empty($_POST['location'])) {
+  $location = htmlspecialchars($_POST['location']);
+
+  if (!empty($location)) {
     $pdoQuery.= "AND ( 6371 * acos( cos( radians(:latitude) ) * cos( radians( latitude ) ) 
 * cos( radians( longitude ) - radians(:longitude) ) + sin( radians(:latitude) ) * sin(radians(latitude)) ) ) <= :location ";
   }
@@ -118,13 +120,15 @@ if (isset($_POST['submit'])){
 
   $stmt = $pdo->prepare($pdoQuery);
 
-  $itemName = "%".$_POST['itemName']."%";
-  $searchSuburb = "%".$_POST['suburb']."%";
-  $location = $_POST['location'];
-  $latitude = $_POST['latitude'];
-  $longitude = $_POST['longitude'];
+  $itemNameSecure = htmlspecialchars($_POST['itemName']);
+  $searchSuburbSecure = htmlspecialchars($_POST['suburb']);
 
-  if (!empty($_POST['location'])) {
+  $itemName = "%".$itemNameSecure."%";
+  $searchSuburb = "%".$searchSuburbSecure."%";
+  $latitude = htmlspecialchars($_POST['latitude']);
+  $longitude = htmlspecialchars($_POST['longitude']);
+
+  if (!empty($location)) {
     $pdoExec = $stmt->execute(array(
       ":itemName"=>$itemName,
       ":searchSuburb"=>$searchSuburb,
@@ -140,18 +144,18 @@ if (isset($_POST['submit'])){
   if($pdoExec){
 
       echo("Showing results");
-      if (!empty($_POST['itemName'])) {
-        echo(" containing \"" . $_POST['itemName'] . "\"");
+      if (!empty($itemNameSecure)) {
+        echo(" containing \"" . $itemNameSecure . "\"");
       }
-      if (!empty($_POST['suburb'])) {
-        echo(" in " . $_POST['suburb']);
+      if (!empty(htmlspecialchars($_POST['suburb']))) {
+        echo(" in " . htmlspecialchars($_POST['suburb']));
       }
       if (!empty($_POST['rating'])) {
         echo(" with average ratings of " . implode(", ", $_POST['rating']));
       }
-      if (!empty($_POST['location'])) {
-        echo(" within " . $_POST['location'] . " kilometer");
-        if ($_POST['location'] != 1) {
+      if (!empty($location)) {
+        echo(" within " . $location . " kilometer");
+        if ($location != 1) {
           echo("s");
         }
         echo(" of your location");
