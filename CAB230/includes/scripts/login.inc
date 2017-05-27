@@ -26,7 +26,8 @@
       $userDetails = $stmt->fetch();
       // Result will be true if passwords match, false otherwise
       $result = password_verify($submittedPassword, $userDetails[7]);
-    } else {
+    } 
+    else {
       $userExists = false;
     }
 

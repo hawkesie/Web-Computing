@@ -35,7 +35,7 @@ include "includes/partials/leftBar.inc";
 <?php
 
 if (isset($_SESSION['name'])) {
-    include "includes/scripts/rightSidebarLogged.inc";
+  include "includes/scripts/rightSidebarLogged.inc";
 }
 else{
   include "includes/scripts/rightSidebar.inc";
@@ -49,7 +49,7 @@ else{
 
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">
-   Name:<br>
+  Name:<br>
     <input type="text" name="name" id="name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?>">
     <?php
       checkName();

@@ -10,7 +10,7 @@
 
 
 <html>
- <head >
+<head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
  <script type="text/javascript" src="includes/scripts/individualMap.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
@@ -19,7 +19,7 @@
  <title>Individual Item Page</title>
  <meta charset="UTF-8">
  </head>
- <body>
+<body>
 <!--  Heading at the top of the page  -->
  <h1>Individual Item Page</h1>
 <?php
@@ -74,18 +74,18 @@ if(isset($_GET['itemID'])){
   echo $itemName.' is in '.$suburb."<br><br>";
   echo "Average rating: " . $averageRating;
   echo'<br><br>';
-
-
 }
 ?>
 
-   
     <div id="map"></div>
     <script type="text/javascript">
-      var latitude= <?php echo $GLOBAL['latitude']; ?>;
-      var longitude= <?php echo $GLOBAL['longitude']; ?>;
-      initMap();
+    var itemName= "<?php echo $GLOBAL['itemName']; ?>";
+    var latitude= <?php echo $GLOBAL['latitude']; ?>;
+    var longitude= <?php echo $GLOBAL['longitude']; ?>;
+
+    initMap();
     </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
     </script>
@@ -93,8 +93,7 @@ if(isset($_GET['itemID'])){
 
 <br><br>
 <?php
-if(isset($_SESSION['name'])){
-  
+if(isset($_SESSION['name'])){  
   include "includes/scripts/reviewContent.inc";
 }
 ?>
@@ -108,6 +107,7 @@ if(isset($_GET['itemID'])){
   $pdoQ.= "WHERE parkID = $itemID";
   $sub = $pdo->prepare($pdoQ);
   $pdoExec = $sub->execute();
+
   echo'<div>Reviews:';
   echo '<table id="reviews">';
   echo '<tr id="top"><td>Comments';
@@ -115,43 +115,37 @@ if(isset($_GET['itemID'])){
   echo"<td>Rating<br></td></tr>";
 
   foreach($sub as $row){
-          $reviewID=$row['reviewID'];
-          $userID=$row['userID'];
-          $review=$row['review'];
-          $rating=$row['rating'];
-          $reviewDate=$row['reviewDate'];
-          $userName=$row['name'];
+    $reviewID=$row['reviewID'];
+    $userID=$row['userID'];
+    $review=$row['review'];
+    $rating=$row['rating'];
+    $reviewDate=$row['reviewDate'];
+    $userName=$row['name'];
 
     echo"<tr>";
     echo"<td itemprop='description'>$review</td>";
-    
-
-
     echo"<td>$userName<br></td>";
-    echo"<td itemprop='rating'>$rating<br></td>";
-      
+    $rating=5;
+    echo"<td itemprop='rating'>$rating</td><br>";    
     echo"</tr>";
-
-
-        }
-        echo'</table>';
+  }
+    echo'</table>';
 
 }
-
 ?>
 </article>
+
 <article itemscope itemtype="http://data-vocabulary.org/Place">
 <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-    <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
-    <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
-
-  </div>
+  <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
+  <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
 </div>
 
+</div><!--Close reviews div -->
 
-</div>
+</div><!--Close content div -->
 
 <!--  Holder for the footer of the web page  -->
 <div id=footer>Footer</div>
- </body>
+</body>
 </html> 

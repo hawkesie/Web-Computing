@@ -48,8 +48,9 @@ if(isset($_POST['submit'])){
 
 		dbClose($pdo, $stmt);
 
-		} else {
-		echo 'Please select a rating';
+		} 
+		else {
+			echo 'Please select a rating';
 		}
 }
 

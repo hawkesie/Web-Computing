@@ -2,48 +2,47 @@
 
 
 <?php
-
   include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
-
 ?>
 
 <html>
- <head >
+<head>
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
   <script type="text/javascript" src="includes/scripts/search.js"></script>
 <!--  Links to the css file which contains the syling instructions for the web page  -->
- <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
+  <link href="lib/css/WebStyleSheet.css" rel="stylesheet" type="text/css"/>
 <!-- Title which is shown in the tab of the web page  -->
- <title>Search Page</title>
- <meta charset="UTF-8">
- </head>
- <body>
+  <title>Search Page</title>
+  <meta charset="UTF-8">
+</head>
+<body>
 <!--  Heading at the top of the page  -->
- <h1>Search Page</h1>
+<h1>Search Page</h1>
 <div id=menu></div>
+
 <?php
-include "includes/partials/leftBar.inc";
+  include "includes/partials/leftBar.inc";
 ?>
 <!--  Holder for the Right sidebar  -->
 <?php
 
-if (isset($_SESSION['name'])) {
-    include "includes/scripts/rightSidebarLogged.inc";
-}
-else{
-  include "includes/scripts/rightSidebar.inc";
-}
+  if (isset($_SESSION['name'])) {
+      include "includes/scripts/rightSidebarLogged.inc";
+  }
+  else{
+    include "includes/scripts/rightSidebar.inc";
+  }
 
-$pdo = dbConnect();
+  $pdo = dbConnect();
 
-$sql = "SELECT DISTINCT suburb FROM parks ";
-$sql.= "ORDER BY suburb ASC;";
+  $sql = "SELECT DISTINCT suburb FROM parks ";
+  $sql.= "ORDER BY suburb ASC;";
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
 
-$suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+  $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
 ?>
 
