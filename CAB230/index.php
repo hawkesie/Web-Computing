@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<?php
 
+<?php
+  // include files and scripts we will be using
   include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
-
 ?>
+
 <html>
  <head >
 <!-- Links to the javascript file which contains the functions that are excuted on this page   -->
@@ -23,25 +24,17 @@
 	$title = "Brisbane Parks";
     include "includes/partials/header.inc";
     include "includes/partials/leftBar.inc";
+
+  //Checks if a session is set for the correct right sidebar
+  if (isset($_SESSION['name'])) {
+      include "includes/scripts/rightSidebarLogged.inc";
+  }
+  else{
+    include "includes/scripts/rightSidebar.inc";
+  }
 ?>
-
-
-
-</div>
-<!--  Holder for the Right sidebar  -->
-<?php
-
-if (isset($_SESSION['name'])) {
-    include "includes/scripts/rightSidebarLogged.inc";
-}
-else{
-  include "includes/scripts/rightSidebar.inc";
-}
-?>
-
-</div>
   
-<!-- Holder for the ain content area of the web page.   -->
+<!-- Holder for the main content area of the web page.   -->
 <div id=content>
   <h3>Welcome to Brisbane Parks</h3>
   <p>Have a lovely day!</p>

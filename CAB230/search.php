@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-
 <?php
+  // include files and scripts we will be using
   include"config/DBconfig.inc";
   include "includes/scripts/login.inc";
 ?>
@@ -22,10 +22,8 @@
   $title = "Search Page";
   include "includes/partials/header.inc";
   include "includes/partials/leftBar.inc";
-?>
-<!--  Holder for the Right sidebar  -->
-<?php
 
+  //Checks if a session is set for the correct right sidebar
   if (isset($_SESSION['name'])) {
       include "includes/scripts/rightSidebarLogged.inc";
   }
@@ -35,12 +33,14 @@
 
   $pdo = dbConnect();
 
+  //SQL query to create select menu for each distinct suburb found in the database
   $sql = "SELECT DISTINCT suburb FROM parks ";
   $sql.= "ORDER BY suburb ASC;";
 
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
 
+  //Create array of each suburb to iterate through
   $suburbArray = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
 ?>
@@ -49,21 +49,26 @@
 <div id=content>
 <form action="search.php" method="post" onSubmit="initMap()">
   Name<br>
+    <!-- put their search back into the value boxes (after checking for XSS entries) -->
     <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? htmlspecialchars($_POST['itemName']) : '' ?>"><br><br>
 
   Suburb<br>
+    <!-- Create empty select with no value -->
     <select name="suburb" id="suburb">
 
+    <!-- Creates select menu item with users response at the top after submitted -->
       <?php if (!empty($_POST['suburb'])) { ?>
         <option value="<?php echo $_POST["suburb"] ?>"><?php echo htmlspecialchars($_POST["suburb"]) ?></option>
       <?php } ?>
 
+      <!-- Creates select menu item with each suburb -->
       <option value=""></option>
       <?php foreach($suburbArray as $suburb => $value) { ?>
         <option value="<?php echo $value ?>"><?php echo $value ?></option>
       <?php } ?>
     </select><br><br>
 
+  <!-- Create rating checkboxes including an 'all' value (All value will also return parks without a rating) -->
   Rating<br>
     <label><input type="checkbox" name="checkAll" onClick="toggle(this)"/>Any</label>
 
@@ -76,15 +81,19 @@
     </div>
     <br>
   Maximum distance in kilometres (Location must be enabled)<br>
+    <!-- Search by location input. disabled unless toggled on by enable checkbox -->
     <input type="text" name="location" id="location" readonly>
+    <!-- Enable checkbox to allow user location data to be sent to server -->
     <input type="checkbox" onClick="locationToggle()">Enable<br><br>
 
+  <!-- Hidden text entries initially empty, filled with user location data upon enabled checkbox -->
   <input type="hidden" name="latitude" id="latitude"></input>
   <input type="hidden" name="longitude" id="longitude"></input>
 
   <input type="submit" name="submit" value="Search">
 </form><br><br>
 
+<!-- Div for google maps -->
 <div id="map"></div>
 
 <!-- Run the search.inc script -->
