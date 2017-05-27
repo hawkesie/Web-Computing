@@ -1,6 +1,6 @@
 <div id=rightbar><br>Already a member?<br>
 <br>
-
+<!-- Login form for the right sidebar. This will be accessible from every page if a user is not logged in -->
 <form name="loginForm" method = "post">
   Username:<br>
   <input type="text" name="loginUsername" id="loginText"><br><br>

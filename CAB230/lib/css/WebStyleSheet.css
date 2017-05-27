@@ -27,10 +27,12 @@ h1{
 	z-index: 1;
 }
 
+/*	Styling to center the header */
 h3{
 	text-align: center;
 }
 
+/*	Styling for table data */
 td {
     padding: 15px;
     text-align: left;
@@ -137,29 +139,33 @@ This includes setting the fonts, setting the font color, background color, width
 	min-width: 325px;
 }
 
+/*	Styling to give reviews table a top border */
 #reviews{
 	
 	border-top: 1px solid black;
 
 	
 }
-
+/*	Styling to give reviews table and data within a bottom border */
 #reviews,td{
 	border-bottom: 1px solid black;
 	
 
 }
 
+/*	Styling to make text on the top row of the reviews table bold */
 #top{
 	font-weight: bold;
 }
 
+/*	Styling to make the map scroll underneath the fixed header and give specific height*/
 #map{
 	height: 400px;
 	position: relative;
 	z-index: 0;
 }
 
+/*	Styling to make the login bar change width with the page */
 #loginText{
 	width:80%;
 }

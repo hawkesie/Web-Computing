@@ -2,6 +2,7 @@
 
 Write a review<br>
 
+<!-- Create a form area with a text area for review text and radio buttons for a rating. onsubmit function finds if no rating has been selected and prevents submission -->
 <form onsubmit="return ratingCheck()" name="reviewForm" method = "post">
 <textarea rows="4" cols="50" name="textbox"></textarea><br><br>
 

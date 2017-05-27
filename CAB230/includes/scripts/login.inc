@@ -1,20 +1,24 @@
 <?php
   include "includes/functions.inc";
+  //globals for error checking
   $GLOBALS['badUsernamePassword']='';
   $GLOBALS['loggedIn']='';
 
+  //If the user clicks login button
   if (isset($_POST['login'])) {
     //Process the form
 
-
+    //XSS attack prevention
     $username = htmlspecialchars($_POST["loginUsername"]);
     $submittedPassword = htmlspecialchars($_POST["loginPassword"]);
 
+    //Set bools to test for conditions
     $userExists = true;
     $matchedPasswords = false;
 
     $pdo =  dbConnect();
     
+    //SQL statement to find user details
     $sql =  "SELECT * FROM users ";
     $sql .= "WHERE username = :username";
     $stmt = $pdo->prepare($sql);
@@ -31,17 +35,21 @@
       $userExists = false;
     }
 
+    //If login details given matches data in database
     if ($userExists == true && $result == true) {
       
       $GLOBALS['loggedIn']='';
+      //Begin the session with user details
       $_SESSION['id'] = $userDetails[0];
       $_SESSION['name'] = $userDetails[1];
       $_SESSION['email'] = $userDetails[2];
       $_SESSION['username'] = $userDetails[3];
       $GLOBALS['loggedIn']=$_SESSION['name'];
 
+      //Refresh the page the user was on prior to logging in 
       echo "<meta http-equiv=\"refresh\">";
     } else {
+        //Return an error message to the user if login failed
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";
     }
 
