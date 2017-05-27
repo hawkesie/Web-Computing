@@ -1,5 +1,6 @@
 <?php
 	// Connect to the database
+	//All within a try/catch statement as we don't want database login details given if failed to connect
 	session_start();
 	function dbConnect() {
 		try {

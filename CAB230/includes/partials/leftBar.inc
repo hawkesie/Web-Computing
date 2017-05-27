@@ -1,3 +1,4 @@
+<!-- div for the navigation, to be included in main web pages -->
 <div id=navigation>
 Navigation<br><br>
 <!-- Links in the navigation bar on the left side of the web page -->
