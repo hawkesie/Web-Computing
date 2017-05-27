@@ -74,78 +74,77 @@ if(isset($_GET['itemID'])){
   echo $itemName.' is in '.$suburb."<br><br>";
   echo "Average rating: " . $averageRating;
   echo'<br><br>';
-}
-?>
+  ?>
 
-    <div id="map"></div>
-    <script type="text/javascript">
-    var itemName= "<?php echo $GLOBAL['itemName']; ?>";
-    var latitude= <?php echo $GLOBAL['latitude']; ?>;
-    var longitude= <?php echo $GLOBAL['longitude']; ?>;
+      <div id="map"></div>
+      <script type="text/javascript">
+      var itemName= "<?php echo $GLOBAL['itemName']; ?>";
+      var latitude= <?php echo $GLOBAL['latitude']; ?>;
+      var longitude= <?php echo $GLOBAL['longitude']; ?>;
+      </script>
 
-    initMap();
-    </script>
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
-    </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcm-34HojWSbCSmhhT--vnT9sYTWti0U&callback=initMap">
+      </script>
 
 
-<br><br>
-<?php
-if(isset($_SESSION['name'])){  
-  include "includes/scripts/reviewContent.inc";
-}
-?>
-<br><br>
-
-<?php
-if(isset($_GET['itemID'])){
-  $itemID=$_GET['itemID'];
-  $pdo = dbConnect();
-  $pdoQ = "SELECT * FROM reviews INNER JOIN users ON users.id = reviews.userID ";
-  $pdoQ.= "WHERE parkID = $itemID";
-  $sub = $pdo->prepare($pdoQ);
-  $pdoExec = $sub->execute();
-
-  echo'<div>Reviews:';
-  echo '<table id="reviews">';
-  echo '<tr id="top"><td>Comments';
-  echo"<td>User</td>";
-  echo"<td>Rating<br></td></tr>";
-
-  foreach($sub as $row){
-    $reviewID=$row['reviewID'];
-    $userID=$row['userID'];
-    $review=$row['review'];
-    $rating=$row['rating'];
-    $reviewDate=$row['reviewDate'];
-    $userName=$row['name'];
-
-    echo"<tr>";
-    echo"<td itemprop='description'>$review</td>";
-    echo"<td>$userName<br></td>";
-    $rating=5;
-    echo"<td itemprop='rating'>$rating</td><br>";    
-    echo"</tr>";
+  <br><br>
+  <?php
+  if(isset($_SESSION['name'])){  
+    include "includes/scripts/reviewContent.inc";
   }
-    echo'</table>';
+  ?>  
 
+  <?php
+  if(isset($_GET['itemID'])){
+    $itemID=$_GET['itemID'];
+    $pdo = dbConnect();
+    $pdoQ = "SELECT * FROM reviews INNER JOIN users ON users.id = reviews.userID ";
+    $pdoQ.= "WHERE parkID = $itemID";
+    $sub = $pdo->prepare($pdoQ);
+    $pdoExec = $sub->execute();
+
+    echo'<div><b>Reviews:</b>';
+    echo '<table id="reviews">';
+    echo '<tr id="top"><td>Comments';
+    echo"<td>User</td>";
+    echo"<td>Rating</td></tr>";
+
+    foreach($sub as $row){
+      $reviewID=$row['reviewID'];
+      $userID=$row['userID'];
+      $review=$row['review'];
+      $rating=$row['rating'];
+      $reviewDate=$row['reviewDate'];
+      $userName=$row['name'];
+
+      echo"<tr>";
+      echo"<td itemprop='description'>$review</td>";
+      echo"<td>$userName</td>";
+      $rating=5;
+      echo"<td itemprop='rating'>$rating</td>";    
+      echo"</tr>";
+    }
+      echo'</table>';
+
+  }
+  ?>
+  </article>
+
+  <article itemscope itemtype="http://data-vocabulary.org/Place">
+  <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+    <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
+    <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
+  </div>
+
+  </div><!--Close reviews div -->
+
+  </div><!--Close content div -->
+
+  <!--  Holder for the footer of the web page  -->
+  <div id=footer>Footer</div>
+  </body>
+  </html>
+<?php
 }
 ?>
-</article>
-
-<article itemscope itemtype="http://data-vocabulary.org/Place">
-<div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-  <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
-  <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
-</div>
-
-</div><!--Close reviews div -->
-
-</div><!--Close content div -->
-
-<!--  Holder for the footer of the web page  -->
-<div id=footer>Footer</div>
-</body>
-</html> 
