@@ -39,7 +39,7 @@ else{
 <!-- Holder for the ain content area of the web page.   -->
 <div id=content>Item Page<br><br>
   <!-- Open and close the status div containers -->
-
+<article itemscope itemtype="http://data-vocabulary.org/Review">
 <?php
 $GLOBAL['latitude']='';
 $GLOBAL['longitude']='';
@@ -54,6 +54,7 @@ if(isset($_GET['itemID'])){
   $pdoQuery = "SELECT * FROM parks WHERE id LIKE $ID";
   $stmt = $pdo->prepare($pdoQuery);
   $pdoExec = $stmt->execute();
+  $itemName='';
   foreach($stmt as $row){
           $itemName=$row['Name'];
           $itemID=$row['id'];
@@ -69,6 +70,7 @@ if(isset($_GET['itemID'])){
 
           }
 
+  echo"<h3 itemprop='itemreviewed'>$itemName</h3>";
   echo $itemName.' is in '.$suburb."<br><br>";
   echo "Average rating: " . $averageRating;
   echo'<br><br>';
@@ -77,11 +79,11 @@ if(isset($_GET['itemID'])){
 }
 ?>
 
+   
     <div id="map"></div>
     <script type="text/javascript">
       var latitude= <?php echo $GLOBAL['latitude']; ?>;
       var longitude= <?php echo $GLOBAL['longitude']; ?>;
-      var itemName= "<?php echo $GLOBAL['itemName']; ?>";
       initMap();
     </script>
     <script async defer
@@ -120,11 +122,13 @@ if(isset($_GET['itemID'])){
           $reviewDate=$row['reviewDate'];
           $userName=$row['name'];
 
-    echo"<tr><td>";
-    echo"$review</td>";
+    echo"<tr>";
+    echo"<td itemprop='description'>$review</td>";
+    
+
 
     echo"<td>$userName<br></td>";
-    echo"<td>$rating<br></td>";
+    echo"<td itemprop='rating'>$rating<br></td>";
       
     echo"</tr>";
 
@@ -135,6 +139,13 @@ if(isset($_GET['itemID'])){
 }
 
 ?>
+</article>
+<article itemscope itemtype="http://data-vocabulary.org/Place">
+<div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+    <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
+    <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
+
+  </div>
 </div>
 
 
