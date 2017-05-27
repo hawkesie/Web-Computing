@@ -37,7 +37,7 @@ else{
 ?>
 
 <!-- Holder for the ain content area of the web page.   -->
-<div id=content>Item Page<br><br>
+<div id=content>
   <!-- Open and close the status div containers -->
 <article itemscope itemtype="http://data-vocabulary.org/Review">
 <?php

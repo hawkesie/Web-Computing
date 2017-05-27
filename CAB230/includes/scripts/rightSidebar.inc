@@ -1,5 +1,5 @@
-<div id=rightbar>Right Sidebar<br><br>
-<br><br>
+<div id=rightbar><br>Already a member?<br>
+<br>
 
 <form name="loginForm" method = "post">
   Username:<br>
@@ -11,7 +11,5 @@
     checkUsernamePasswordCombination();
   ?>
 </form>
-
-
 
 </div>

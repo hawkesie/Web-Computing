@@ -45,7 +45,7 @@ else{
 ?>
   
 <!-- Holder for the ain content area of the web page.   -->
-<div id=content>Registration<br><br>
+<div id=content>
 
 <!-- Form where users can input their information. The form elements include plain text and date formats  -->
 <form onsubmit="return checkValues()" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="registerForm" method = "post">

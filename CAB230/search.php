@@ -47,7 +47,7 @@
 ?>
 
 <!-- Holder for the ain content area of the web page.   -->
-<div id=content>Search<br><br>
+<div id=content>
 <form action="search.php" method="post" onSubmit="initMap()">
   Name<br>
     <input type="text" name="itemName" id="itemName" value="<?php echo isset($_POST['itemName']) ? htmlspecialchars($_POST['itemName']) : '' ?>"><br><br>
