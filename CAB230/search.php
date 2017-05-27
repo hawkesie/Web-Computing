@@ -18,10 +18,9 @@
 </head>
 <body>
 <!--  Heading at the top of the page  -->
-<h1>Search Page</h1>
-<div id=menu></div>
-
 <?php
+  $title = "Search Page";
+  include "includes/partials/header.inc";
   include "includes/partials/leftBar.inc";
 ?>
 <!--  Holder for the Right sidebar  -->
@@ -247,6 +246,8 @@ if (isset($_POST['submit'])){
 
 </div>
 <!--  Holder for the footer of the web page  -->
-<div id=footer>Footer</div>
+<?php
+  include "includes/partials/footer.inc";
+?>
  </body>
 </html

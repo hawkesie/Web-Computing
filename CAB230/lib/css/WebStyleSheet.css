@@ -124,8 +124,9 @@ This includes setting the fonts, setting the font color, background color, width
 	font-size: 10pt;
 	color: #ccd9ff;
 	background-color: #666666;
-	margin-top: 5px;
-	margin-bottom: 2%;
+	text-align: center;
+	padding-bottom: 30px;
+	padding-top: 20px;
 }
 
 /*  Styling for the seacrh results in the SampleResultsPage.html page*/

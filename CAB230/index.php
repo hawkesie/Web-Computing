@@ -19,9 +19,10 @@
 </head>
 <body>
 <!--  Heading at the top of the page  -->
- <h1>Brisbane Parks</h1>
 <?php
-include "includes/partials/leftBar.inc";
+	$title = "Brisbane Parks";
+    include "includes/partials/header.inc";
+    include "includes/partials/leftBar.inc";
 ?>
 
 
@@ -47,6 +48,8 @@ else{
 
 </div>
 <!--  Holder for the footer of the web page  -->
-<div id=footer>Footer</div>
+<?php
+  include "includes/partials/footer.inc";
+?>
  </body>
 </html> 

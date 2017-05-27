@@ -22,15 +22,11 @@
  </head>
  <body>
 <!--  Heading at the top of the page  -->
- <h1>User Registration Page</h1>
-<div id=menu></div>
 <?php
-include "includes/partials/leftBar.inc";
+  $title = "User Registration Page";
+  include "includes/partials/header.inc";
+  include "includes/partials/leftBar.inc";
 ?>
-
-
-
-</div>
 <!--  Holder for the Right sidebar  -->
 <?php
 
@@ -127,7 +123,9 @@ else{
 
 </div>
 <!--  Holder for the footer of the web page  -->
-<div id=footer>Footer</div>
+<?php
+  include "includes/partials/footer.inc";
+?>
  </body>
 </html> 
 

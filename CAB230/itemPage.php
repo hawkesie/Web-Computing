@@ -21,10 +21,11 @@
  </head>
 <body>
 <!--  Heading at the top of the page  -->
- <h1>Individual Item Page</h1>
-<?php
-include "includes/partials/leftBar.inc";
-?>
+  <?php
+    $title = "Individual Item Page";
+    include "includes/partials/header.inc";
+    include "includes/partials/leftBar.inc";
+  ?>
 <!--  Holder for the Right sidebar  -->
 <?php
 if (isset($_SESSION['name'])) {
@@ -142,7 +143,9 @@ if(isset($_GET['itemID'])){
   </div><!--Close content div -->
 
   <!--  Holder for the footer of the web page  -->
-  <div id=footer>Footer</div>
+  <?php
+    include "includes/partials/footer.inc";
+  ?>
   </body>
   </html>
 <?php
