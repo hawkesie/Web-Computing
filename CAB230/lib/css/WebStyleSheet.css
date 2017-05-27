@@ -24,6 +24,7 @@ h1{
 	width:100%;
 	top: -21px;
 	left: -5px;
+	z-index: 1;
 }
 
 h3{
@@ -103,7 +104,7 @@ This includes setting the fonts, setting the font color, background color, width
 	padding-top: 5px;
 	background-color: #8EE338;
 	width:12%;
-	color:white;
+	color: #686868;
 	font-family: Arial-black,Helvetica,sans-serif;
 	font-size:12pt;
 	font-weight: bold;
@@ -154,6 +155,8 @@ This includes setting the fonts, setting the font color, background color, width
 
 #map{
 	height: 400px;
+	position: relative;
+	z-index: 0;
 }
 
 #loginText{
