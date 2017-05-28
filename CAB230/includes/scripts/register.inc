@@ -27,7 +27,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkName']="<span style='color:red;'>Back end validation failed. Please enter your name!</span>";
+    		$GLOBALS['checkName']="<span style='color:red;'>Please enter your name!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -36,7 +36,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkEmailEntered']="<span style='color:red;'>Back end validation failed. Please enter your email!</span>";
+    		$GLOBALS['checkEmailEntered']="<span style='color:red;'>Please enter your email!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -45,7 +45,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkUsernameEntered']="<span style='color:red;'>Back end validation failed. Please enter a username!</span>";
+    		$GLOBALS['checkUsernameEntered']="<span style='color:red;'>Please enter a username!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -54,7 +54,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkBirthDate']="<span style='color:red;'>Back end validation failed. Please select your birthdate!</span>";
+    		$GLOBALS['checkBirthDate']="<span style='color:red;'>Please select your birthdate!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -63,7 +63,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkPostcode']="<span style='color:red;'>Back end validation failed. Please enter your postcode!</span>";
+    		$GLOBALS['checkPostcode']="<span style='color:red;'>Please enter your postcode!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -72,7 +72,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkPassword']="<span style='color:red;'>Back end validation failed. Please enter a password!</span>";
+    		$GLOBALS['checkPassword']="<span style='color:red;'>Please enter a password!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -81,7 +81,7 @@
 		} else {
 			$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkConfirmPassword']="<span style='color:red;'>Back end validation failed. Please confirm your password!</span>";
+    		$GLOBALS['checkConfirmPassword']="<span style='color:red;'>Please confirm your password!</span>";
 		}
 
 		//setting values while ensuring XSS are prevented. Will only be used if Javascript fails
@@ -90,7 +90,7 @@
 	    } else {
 	    	$correct_form = false;
 			//Sets error message where global is positioned
-    		$GLOBALS['checkGender']="<span style='color:red;'>Back end validation failed. Please select your gender!</span>";
+    		$GLOBALS['checkGender']="<span style='color:red;'>Please select your gender!</span>";
 	    }
 
 	    if ($correct_form) {
@@ -129,7 +129,7 @@
 		    if ($password != $confirmPassword) {
 		    	$correct_form = false;
 				//Sets error message where global is positioned
-		    	$GLOBALS['checkPasswordMatch']="<span style='color:red;'>Back end validation failed. Passwords do not match!</span>";
+		    	$GLOBALS['checkPasswordMatch']="<span style='color:red;'>Passwords do not match!</span>";
 		    } else {
 		    	//Hash the password
 		    	$hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);

@@ -49,7 +49,7 @@ if(isset($_GET['itemID'])){
   //Attempt to parse itemID, if can't, set ID to null and redirect
   $ID = ctype_digit($_GET['itemID']) ? intval($_GET['itemID']) : null;
   if ($ID == null) {
-    echo "Whoops, something went wrong!<br><br>Please search for you item again.";
+    echo "Whoops, something went wrong!<br><br>Please search for your item again.";
   } else {
     //Has already been parsed, but just to be safe we use function htmlspecialchars().
     $ID=htmlspecialchars($_GET['itemID']);
@@ -147,7 +147,7 @@ if(isset($_GET['itemID'])){
         }
           echo'</table>';
         } else {
-          echo "Whoops, something went wrong!<br><br>Please search for you item again.";
+          echo "Whoops, something went wrong!<br><br>Please search for your item again.";
         }
 
 
@@ -175,6 +175,6 @@ if(isset($_GET['itemID'])){
 <?php
 } else {
   //This will only run if user enteres itemPage.php into the browser.
-  echo "Whoops, something went wrong!<br><br>Please search for you item again.";
+  echo "Whoops, something went wrong!<br><br>Please search for your item again.";
 }
 ?>

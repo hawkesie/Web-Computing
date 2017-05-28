@@ -69,6 +69,7 @@ function checkValues(){
     if((password=="") || (confirmPassword=="")){
         document.getElementById("password").style.backgroundColor = "orange";
         document.getElementById("confirmPassword").style.backgroundColor = "orange";
+        window.alert("Both password fields must be filled!");
         return false;
     } else {
         document.getElementById("password").style.backgroundColor = "white";
@@ -79,7 +80,7 @@ function checkValues(){
     if(password != confirmPassword){
         document.getElementById("confirmPassword").style.backgroundColor = "orange";
         document.getElementById("confirmPassword").value = "";
-        document.getElementById("password").value = "";
+        window.alert("Your passwords do not match.");
         return false;
     } else {
         document.getElementById("confirmPassword").style.backgroundColor = "white";
