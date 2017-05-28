@@ -150,6 +150,23 @@
 			   		":postcode"=>$postcode,
 			   		":password"=>$hashedPassword)
 			    	);
+
+			    $q = "SELECT id FROM users WHERE username = :username";
+			    $stmt = $pdo->prepare($q);
+			    $stmt->execute(array(
+			    	":username"=>$username));
+			    $userID = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			    $GLOBALS['loggedIn']='';
+
+			    //Begin the session with user details
+			    $_SESSION['id'] = $userID;
+			    $_SESSION['name'] = $name;
+			    $_SESSION['email'] = $email;
+			    $_SESSION['username'] = $username;
+			    $GLOBALS['loggedIn']=$_SESSION['name'];
+			    //Redirect to home page
+			    header('Location: index.php');
 			}
 			//Close the connection to the database
 			dbClose($pdo, $stmt);
