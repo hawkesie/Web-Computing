@@ -47,7 +47,7 @@
       $GLOBALS['loggedIn']=$_SESSION['name'];
 
       //Refresh the page the user was on prior to logging in 
-      echo "<meta http-equiv=\"refresh\">";
+      echo "<meta name='refresh' http-equiv=\"Refresh\">";
     } else {
         //Return an error message to the user if login failed
         $GLOBALS['badUsernamePassword']="<span style='color:red;'>That username and password combination does not exist!<br></span>";

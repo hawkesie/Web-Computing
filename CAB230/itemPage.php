@@ -145,7 +145,7 @@ if(isset($_GET['itemID'])){
           echo"<td itemprop='rating'>$rating</td>";    
           echo"</tr>";
         }
-          echo'</table>';
+          echo'</table></div>';
         } else {
           echo "Whoops, something went wrong!<br><br>Please search for your item again.";
         }
@@ -161,8 +161,7 @@ if(isset($_GET['itemID'])){
     <meta itemprop="latitude" content= <?php echo $GLOBAL['latitude'];?> />
     <meta itemprop="longitude" content=<?php echo $GLOBAL['longitude']; ?> />
   </div>
-
-  </div><!--Close reviews div -->
+  </article>
 
   </div><!--Close content div -->
 

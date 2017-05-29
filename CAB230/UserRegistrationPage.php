@@ -70,7 +70,7 @@
     <!-- Radiobuttons for Gender -->
     <input type="radio" name="gender" value="Male">Male
     <input type="radio" name="gender" value="Female">Female
-    <input type="radio" name="gender" value="Other" checked="true">Other
+    <input type="radio" name="gender" value="Other" checked="checked">Other
     <?php
       //JS function to check entry
       checkGender();

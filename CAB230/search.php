@@ -62,7 +62,8 @@
       <?php } ?>
 
       <!-- Creates select menu item with each suburb -->
-      <option value=""></option>
+      <!-- The following option value is intended to be null giving users an option to not include search by suburb-->
+        <option value=""> </option>
       <?php foreach($suburbArray as $suburb => $value) { ?>
         <option value="<?php echo $value ?>"><?php echo $value ?></option>
       <?php } ?>
@@ -87,8 +88,8 @@
     <input type="checkbox" onClick="locationToggle()">Enable<br><br>
 
   <!-- Hidden text entries initially empty, filled with user location data upon enabled checkbox -->
-  <input type="hidden" name="latitude" id="latitude"></input>
-  <input type="hidden" name="longitude" id="longitude"></input>
+  <input type="hidden" name="latitude" id="latitude">
+  <input type="hidden" name="longitude" id="longitude">
 
   <input type="submit" name="submit" value="Search">
 </form><br><br>
@@ -108,4 +109,4 @@
   include "includes/partials/footer.inc";
 ?>
  </body>
-</html
+</html>
