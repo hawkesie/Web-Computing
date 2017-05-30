@@ -10,12 +10,13 @@ function checkValues(){
     var day = document.getElementById('day').value;
     var month = document.getElementById('month').value;
     var year = document.getElementById('year').value;
+	var badForm = false;
     
 // Alerts if the name field is empty    
     if(name==""){
         document.getElementById("name").style.backgroundColor = "orange";
         document.getElementById("name").value = "Please enter a valid name";
-        return false;
+        badForm = true;
     } else {
         document.getElementById("name").style.backgroundColor = "white";
     }
@@ -26,7 +27,7 @@ function checkValues(){
     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
         document.getElementById("email").style.backgroundColor = "orange";
         document.getElementById("email").value = "Please enter a valid email";
-        return false;
+        badForm = true;
     } else {
         document.getElementById("email").style.backgroundColor = "white";
     }
@@ -34,7 +35,7 @@ function checkValues(){
     if(username==""){
         document.getElementById("username").style.backgroundColor = "orange";
         document.getElementById("username").value = "Please enter a valid username";
-        return false;
+        badForm = true;
     } else {
         document.getElementById("username").style.backgroundColor = "white";
     }
@@ -47,14 +48,14 @@ function checkValues(){
     }
     if (radioChecked == false) {
         window.alert("Please select your gender");
-        return false;
+        badForm = true;
     } else {
         document.getElementById("postcode").style.backgroundColor = "white";
     }
 
     if ((day == "") || (month == "") || (year == "")) {
         window.alert("Please enter your birth date");
-        return false;
+        badForm = true;
     }
 
     // Alerts if the postcode is in an invalid format
@@ -62,7 +63,17 @@ function checkValues(){
     if(regex.test(postcode)==false){
         document.getElementById("postcode").style.backgroundColor = "orange";
         document.getElementById("postcode").value = "Please enter a valid postcode";
-        return false;
+        badForm = true;
+    }
+	
+//  Alerts if passwords don't match
+    if(password != confirmPassword){
+        document.getElementById("confirmPassword").style.backgroundColor = "orange";
+        document.getElementById("confirmPassword").value = "";
+        window.alert("Your passwords do not match.");
+        badForm = true;
+    } else {
+        document.getElementById("confirmPassword").style.backgroundColor = "white";
     }
     
     //Alerts if password field is empty
@@ -70,21 +81,15 @@ function checkValues(){
         document.getElementById("password").style.backgroundColor = "orange";
         document.getElementById("confirmPassword").style.backgroundColor = "orange";
         window.alert("Both password fields must be filled!");
-        return false;
+        badForm = true;
     } else {
         document.getElementById("password").style.backgroundColor = "white";
         document.getElementById("confirmPassword").style.backgroundColor = "white";
     }
-    
-//  Alerts if passwords don't match
-    if(password != confirmPassword){
-        document.getElementById("confirmPassword").style.backgroundColor = "orange";
-        document.getElementById("confirmPassword").value = "";
-        window.alert("Your passwords do not match.");
-        return false;
-    } else {
-        document.getElementById("confirmPassword").style.backgroundColor = "white";
-    }
+	
+	if (badForm) {
+		return false;
+	}
 
 
 

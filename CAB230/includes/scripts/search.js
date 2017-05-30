@@ -91,10 +91,13 @@ function initMap() {
 		  //Sets itemID to the end of URL based on iteration for clickable links
 		  url:("itemPage.php?itemID=" + idArray[i])
 		});
+		
+		//Create clickable link
+		google.maps.event.addListener(marker,'click',(function(marker,i){
+			return function(){
+				window.location.href = marker.url;
+			}
+		})(marker, i));
 
-		//Create clickable links
-		marker.addListener('click', function() {
-          window.location.href = marker.url;
-        });
 	}
 }
