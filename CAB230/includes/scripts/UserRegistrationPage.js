@@ -11,7 +11,7 @@ function checkValues(){
     var month = document.getElementById('month').value;
     var year = document.getElementById('year').value;
 	var badForm = false;
-    var alphabetOnly = /^[a-zA-Z]+$/;
+	var alphabetOnly = /^\w\D+( \w\D+)*$/;
     var alphaNumericOnly = /^[a-zA-Z0-9@]+$/;
     
 // Alerts if the name field is empty    
