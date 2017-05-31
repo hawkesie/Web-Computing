@@ -52,7 +52,6 @@ This includes setting the fonts, setting the font color, background color, width
 	margin-right: 1%;
 	overflow: hidden;
 	position:fixed;
-	width: fixed;
 }
 
 /*  This sets the styling for each of the links in the navigation bar*/
@@ -65,6 +64,7 @@ This includes setting the fonts, setting the font color, background color, width
 	padding-left:1%;
 	padding-top: 5%;
 	padding-bottom: 5%;
+	height: 250px;
 	margin-right: 1%;
 }
 
@@ -112,14 +112,14 @@ This includes setting the fonts, setting the font color, background color, width
 	text-decoration: none;
 	padding-top: 1%;
 	padding-left: 1%;
-	padding-right: 1%
-	padding-bottom: 10%;
+	padding-right: 1%;
+	padding-bottom: 5%;
 	margin-bottom: 5%;
 	margin-right: 2%;
 	overflow: hidden;
 	margin-left: 85.5%;
 	position:fixed;
-	height: 250px;
+	/*height: 250px;*/
 }
 
 /*  Styling for the footer of the web pages*/
