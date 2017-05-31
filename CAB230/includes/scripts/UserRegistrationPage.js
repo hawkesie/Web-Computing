@@ -11,11 +11,17 @@ function checkValues(){
     var month = document.getElementById('month').value;
     var year = document.getElementById('year').value;
 	var badForm = false;
+    var alphabetOnly = /^[a-zA-Z]+$/;
+    var alphaNumericOnly = /^[a-zA-Z0-9@]+$/;
     
 // Alerts if the name field is empty    
-    if(name==""){
+    if(name=="" || name == "Please enter a valid name" || name =="Alphabet characters only"){
         document.getElementById("name").style.backgroundColor = "orange";
         document.getElementById("name").value = "Please enter a valid name";
+        badForm = true;
+    } else if (alphabetOnly.test(name) == false){
+        document.getElementById("name").style.backgroundColor = "orange";
+        document.getElementById("name").value = "Alphabet characters only";
         badForm = true;
     } else {
         document.getElementById("name").style.backgroundColor = "white";
@@ -32,9 +38,13 @@ function checkValues(){
         document.getElementById("email").style.backgroundColor = "white";
     }
 
-    if(username==""){
+    if(username=="" || username=="Please enter a valid username" || username == "Alphanumeric characters only"){
         document.getElementById("username").style.backgroundColor = "orange";
         document.getElementById("username").value = "Please enter a valid username";
+        badForm = true;
+    } else if (alphaNumericOnly.test(username) == false){
+        document.getElementById("username").style.backgroundColor = "orange";
+        document.getElementById("username").value = "Alphanumeric characters only";
         badForm = true;
     } else {
         document.getElementById("username").style.backgroundColor = "white";
